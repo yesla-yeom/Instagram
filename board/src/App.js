@@ -1,11 +1,10 @@
-import "./App.css";
+// import { BrowserRouter } from "react-router-dom";
 
-function App() {
-  return (
-    <Provider store={store}>
-      <RegistContainer></RegistContainer>
-    </Provider>
-  );
-}
+import Instagram from "./Components/index";
+// import ScrollToTop from "./ScrollToTop";
+
+const App = () => {
+  return <Instagram></Instagram>;
+};
 
 export default App;

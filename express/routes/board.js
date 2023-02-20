@@ -1,6 +1,6 @@
 const router = require("express").Router();
 
-router.post("/", (req, res) => {
+router.post("/post", (req, res) => {
   res.end();
 });
 

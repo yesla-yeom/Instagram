@@ -2,16 +2,16 @@ import styled from "styled-components";
 import React, { useState } from "react";
 
 const PostComponent = () => {
-  const [userId, setUserId] = useState("");
-  const [userPw, setUserPw] = useState("");
+  const [title, setTitle] = useState("");
+  const [text, setText] = useState("");
 
   return (
-    <LogInBox>
+    <PostBox>
       <input
         type={"text"}
         value={title}
         onInput={(e) => {
-          setUserId(e.target.value);
+          setTitle(e.target.value);
         }}
         placeholder={"TITLE"}
       />
@@ -20,7 +20,7 @@ const PostComponent = () => {
         type={"text"}
         value={text}
         onInput={(e) => {
-          setUserPw(e.target.value);
+          setText(e.target.value);
         }}
         placeholder={"TEXT"}
       />
@@ -32,10 +32,10 @@ const PostComponent = () => {
       >
         Add Text
       </button>
-    </LogInBox>
+    </PostBox>
   );
 };
 
 export default PostComponent;
 
-const LogInBox = styled.div``;
+const PostBox = styled.div``;
