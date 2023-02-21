@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 
-const PostComponent = () => {
+const PostComponent = ({ logInClick }) => {
   const [userId, setUserId] = useState("");
   const [userPw, setUserPw] = useState("");
 
@@ -28,7 +28,14 @@ const PostComponent = () => {
           className="pw"
         />
 
-        <button className="logInBtn">Log In</button>
+        <button
+          className="logInBtn"
+          onClick={() => {
+            logInClick(userId, userPw);
+          }}
+        >
+          Log In
+        </button>
       </LogInFrame>
     </LogInBox>
   );

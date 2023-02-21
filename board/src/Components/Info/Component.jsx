@@ -1,12 +1,21 @@
 import styled from "styled-components";
+import axios from "axios";
 import React from "react";
 
-const InfoComponent = () => {
+const InfoComponent = ({ onClick, setTest, userName }) => {
   return (
     <InfoBox>
       <InfoFrame>
-        <div>님 어서오세요😝</div>
-        <button className="logoutBtn"> Log Out</button>
+        <div>{userName}님 어서오세요😝</div>
+        <button
+          className="logoutBtn"
+          onClick={() => {
+            setTest(false);
+            onClick();
+          }}
+        >
+          Log Out
+        </button>
       </InfoFrame>
     </InfoBox>
   );
