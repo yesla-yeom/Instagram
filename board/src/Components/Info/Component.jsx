@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import axios from "axios";
 import React from "react";
 
 const InfoComponent = ({ onClick, setTest, userName }) => {
