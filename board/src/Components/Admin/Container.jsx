@@ -1,7 +1,7 @@
 import AdminComponent from "./Component";
 
 const AdminContainer = () => {
-  return;
+  return <AdminComponent></AdminComponent>;
 };
 
 export default AdminContainer;

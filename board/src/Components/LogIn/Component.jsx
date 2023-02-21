@@ -7,35 +7,70 @@ const PostComponent = () => {
 
   return (
     <LogInBox>
-      <input
-        type={"text"}
-        value={title}
-        onInput={(e) => {
-          setUserId(e.target.value);
-        }}
-        placeholder={"TITLE"}
-      />
+      <LogInFrame>
+        <input
+          type={"text"}
+          value={userId}
+          onInput={(e) => {
+            setUserId(e.target.value);
+          }}
+          placeholder={"ID"}
+          className="id"
+        />
 
-      <input
-        type={"text"}
-        value={text}
-        onInput={(e) => {
-          setUserPw(e.target.value);
-        }}
-        placeholder={"TEXT"}
-      />
+        <input
+          type={"password"}
+          value={userPw}
+          onInput={(e) => {
+            setUserPw(e.target.value);
+          }}
+          placeholder={"PW"}
+          className="pw"
+        />
 
-      <button
-      // onClick={() => {
-      //   onClick(title, text);
-      // }}
-      >
-        Add Text
-      </button>
+        <button className="logInBtn">Log In</button>
+      </LogInFrame>
     </LogInBox>
   );
 };
 
 export default PostComponent;
 
-const LogInBox = styled.div``;
+const LogInBox = styled.div`
+  width: 20vw;
+`;
+
+const LogInFrame = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 3rem auto;
+
+  & .id {
+    background-color: aliceblue;
+    border: 1 px #000;
+    border-radius: 5px;
+    margin: 5px;
+    padding: 5px;
+  }
+
+  & .pw {
+    background-color: aliceblue;
+    border: 1 px #000;
+    border-radius: 5px;
+    margin: 5px;
+    padding: 5px;
+  }
+
+  & .logInBtn {
+    font-size: 1rem;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    margin: 5px;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  }
+`;

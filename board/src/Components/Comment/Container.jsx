@@ -1,7 +1,7 @@
-import PostComponent from "../Post/Component";
+import CommentComponent from "./Component";
 
-const PostContainer = () => {
-  return <PostComponent></PostComponent>;
+const CommentContainer = () => {
+  return <CommentComponent></CommentComponent>;
 };
 
-export default PostContainer;
+export default CommentContainer;

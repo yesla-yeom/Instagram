@@ -1,8 +1,8 @@
-import InfoComponent from "./Components";
+import InfoComponent from "./Component";
 
 const InfoContainer = () => {
   const onClick = () => {};
-  return <InfoComponent userName={userName} onClick={onClick} />;
+  return <InfoComponent onClick={onClick} />;
 };
 
 export default InfoContainer;
