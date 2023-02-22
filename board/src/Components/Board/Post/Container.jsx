@@ -1,16 +1,19 @@
 import PostComponent from "./Component";
 import axios from "axios";
 
-const PostContainer = () => {
-  const onClick = async () => {
-    await axios.post("/api/post", {
-      title: "title",
-      text: "text",
-      userName: "userName",
-      userId: "userId",
-    });
+const PostContainer = ({ setBoardList }) => {
+  const listUp = async () => {
+    const tempAxios = await axios.post("http://localhost:8080/api/board/list");
+    setBoardList(tempAxios.data.list);
   };
-
+  const onClick = async (title, text) => {
+    console.log("ㅎㅇ");
+    await axios.post("http://localhost:8080/api/board/textdetail", {
+      title: title,
+      text: text,
+    });
+    await listUp();
+  };
   return <PostComponent onClick={onClick}></PostComponent>;
 };
 

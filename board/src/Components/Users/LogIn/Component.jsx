@@ -32,6 +32,8 @@ const PostComponent = ({ logInClick }) => {
           className="logInBtn"
           onClick={() => {
             logInClick(userId, userPw);
+            setUserId("");
+            setUserPw("");
           }}
         >
           Log In

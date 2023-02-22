@@ -1,4 +1,5 @@
-// import crypto from "crypto-js";
+const crypto = require("crypto-js");
+const jwt = require("jsonwebtoken");
 
 const { UserInfo } = require("../models");
 
@@ -17,7 +18,7 @@ router.post("/regist", async (req, res) => {
     } else {
       await UserInfo.create({
         userId: req.body.userId,
-        userPw: req.body.userPw,
+        userPw: crypto.SHA256(req.body.userPw).toString(),
         userName: req.body.userName,
       });
       res.send({ status: 200 });
@@ -30,18 +31,20 @@ router.post("/regist", async (req, res) => {
 
 router.post("/login", async (req, res) => {
   const logInData = await UserInfo.findOne({
-    where: { userId: req.body.id },
+    where: { userId: req.body.userId },
   });
-  const userPw = crypto.SHA256(req.body.pw).toString();
-
+  const userPw = crypto.SHA256(req.body.userPw).toString();
+  console.log(req.body.userPw);
   try {
     if (logInData) {
       if (logInData.userPw == userPw) {
+        console.log("하핳");
         res.cookie(
-          "login success",
-          jwt.sigh(
+          "login_success",
+          jwt.sign(
             {
-              userId: req.body.id,
+              userId: req.body.userId,
+              userName: logInData.userName,
             },
             process.env.COOKIE_SECRET
           ),
@@ -61,7 +64,7 @@ router.post("/login", async (req, res) => {
 });
 
 router.post("/logout", (req, res) => {
-  res.clearCookie("individual_login");
+  res.clearCookie("login_success");
   res.send({ state: 12341234 });
 });
 

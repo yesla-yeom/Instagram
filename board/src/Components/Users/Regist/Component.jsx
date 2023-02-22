@@ -42,6 +42,9 @@ const RegistComponent = ({ onClick }) => {
         <button
           onClick={() => {
             onClick(userId, userPw, userName);
+            setUserId("");
+            setUserPw("");
+            setUserName("");
           }}
           className="registBtn"
         >

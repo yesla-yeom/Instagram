@@ -34,6 +34,8 @@ const PostComponent = ({ onClick }) => {
           className="registBtn"
           onClick={() => {
             onClick(title, text);
+            setTitle("");
+            setText("");
           }}
         >
           Add Text

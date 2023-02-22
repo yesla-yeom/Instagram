@@ -2,11 +2,10 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-const ListComponent = ({ list }) => {
+const ListComponent = ({ boardList, removePost }) => {
   return (
     <ListBox>
       <ListFrame>
-        <button className="writeBtn">Write</button>
         <colgroup>
           <col width={"10%"} />
           <col width={"50%"} />
@@ -22,14 +21,26 @@ const ListComponent = ({ list }) => {
           </tr>
         </thead>
         <tbody>
-          {list.map((item, index) => (
+          {boardList?.map((item, index) => (
             <tr key={`tr-${index}`}>
               <td key={`id-${index}`}>{item.id}</td>
               <td key={`title-${index}`}>
                 <Link to={`/post/${item.id}`}>{item.title}</Link>
               </td>
-              <td key={`name-${index}`}>{item.userName}</td>
-              <td key={`createdAt-${index}`}>{item.createdAt}</td>
+              <td key={`name-${index}`}>
+                {item.userName ? item.userName : "익명"}
+              </td>
+              <td key={`createdAt-${index}`}>
+                {new Date(item.createdAt).toLocaleString()}
+              </td>
+              <td
+                className="writeBtn"
+                onClick={() => {
+                  removePost(item.id);
+                }}
+              >
+                지워
+              </td>
             </tr>
           ))}
         </tbody>
@@ -44,7 +55,7 @@ const ListBox = styled.div`
   width: 100vw;
 `;
 
-const ListFrame = styled.div`
+const ListFrame = styled.table`
   display: flex;
   flex-direction: column;
   justify-content: center;
