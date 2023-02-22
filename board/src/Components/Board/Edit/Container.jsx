@@ -1,7 +1,7 @@
 import EditComponent from "./Component";
 
 const EditContainer = () => {
-  return;
+  return <EditComponent />;
 };
 
 export default EditContainer;

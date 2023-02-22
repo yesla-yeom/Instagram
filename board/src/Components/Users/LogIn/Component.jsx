@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 
 const PostComponent = ({ logInClick }) => {
   const [userId, setUserId] = useState("");

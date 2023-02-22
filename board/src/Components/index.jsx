@@ -1,11 +1,11 @@
 // import { Routes, Route } from "react-router-dom";
-import CommentContainer from "./Comment/Container";
-import EditContainer from "./Edit/Container";
-import InfoContainer from "./Info/Container";
-import ListContainer from "./List/Container";
-import LogInContainer from "./LogIn/Container";
-import PostContainer from "./Post/Container";
-import RegistContainer from "./Regist/Container";
+import CommentContainer from "./Board/Comment/Container";
+import EditContainer from "./Board/Edit/Container";
+import InfoContainer from "./Users/Info/Container";
+import ListContainer from "./Board/List/Container";
+import LogInContainer from "./Users/LogIn/Container";
+import PostContainer from "./Board/Post/Container";
+import RegistContainer from "./Users/Regist/Container";
 import styled from "styled-components";
 import HeaderContainer from "./Header/Container";
 // import AdminContainer from "./Admin/Container";

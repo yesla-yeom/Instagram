@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import React, { useState } from "react";
 
-const PostComponent = () => {
+const PostComponent = ({ onClick }) => {
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
 
@@ -32,9 +32,9 @@ const PostComponent = () => {
 
         <button
           className="registBtn"
-          // onClick={() => {
-          //   onClick(title, text);
-          // }}
+          onClick={() => {
+            onClick(title, text);
+          }}
         >
           Add Text
         </button>

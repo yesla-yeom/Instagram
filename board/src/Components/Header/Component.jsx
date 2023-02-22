@@ -13,7 +13,7 @@ const HeaderComponent = ({ moveTo, screen650 }) => {
               <div
                 className="colorText"
                 onClick={() => {
-                  moveTo("searchdetail");
+                  moveTo("/");
                 }}
               >
                 HOME
@@ -31,7 +31,10 @@ const HeaderComponent = ({ moveTo, screen650 }) => {
             <img
               src={logo}
               alt=""
-              style={{ width: "200px", marginLeft: "20%" }}
+              style={{ width: "200px", marginLeft: "20%", cursor: "pointer" }}
+              onClick={() => {
+                moveTo("/");
+              }}
             />
           </LeftFunc>
         </FuncBar>

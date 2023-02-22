@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import React, { useState } from "react";
 
-const CommentComponent = () => {
+const CommentComponent = ({ onClick }) => {
   const [text, setText] = useState("");
 
   return (
@@ -21,9 +21,9 @@ const CommentComponent = () => {
 
         <button
           className="registBtn"
-          // onClick={() => {
-          //   onClick(title, text);
-          // }}
+          onClick={() => {
+            onClick(text);
+          }}
         >
           Add Text
         </button>
