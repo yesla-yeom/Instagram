@@ -47,15 +47,18 @@ export default PostComponent;
 
 const LogInBox = styled.div`
   width: 20vw;
-`;
-
-const LogInFrame = styled.div`
-  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   margin: 3rem auto;
+`;
+
+const LogInFrame = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   & .id {
     background-color: aliceblue;

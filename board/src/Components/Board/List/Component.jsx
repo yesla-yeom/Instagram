@@ -32,6 +32,7 @@ const ListComponent = ({ boardList, removePost }) => {
               </td>
               <td key={`createdAt-${index}`}>
                 {new Date(item.createdAt).toLocaleString()}
+                {/* Date.toLocaleString() 날짜 현지화 */}
               </td>
               <td
                 className="writeBtn"
@@ -39,7 +40,7 @@ const ListComponent = ({ boardList, removePost }) => {
                   removePost(item.id);
                 }}
               >
-                지워
+                Del
               </td>
             </tr>
           ))}
