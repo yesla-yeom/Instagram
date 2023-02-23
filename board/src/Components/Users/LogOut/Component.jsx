@@ -3,7 +3,7 @@ import styled from "styled-components";
 const LogOutComponent = ({ onClick, userName }) => {
   return (
     <LogOutBox>
-      <div>{userName}님 어서오세요😝</div>{" "}
+      <div>{userName}님</div>{" "}
       <button
         className="logOutBtn"
         onClick={() => {

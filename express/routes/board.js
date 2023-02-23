@@ -26,9 +26,19 @@ router.post("/list", async (req, res) => {
   // list: <= 이런 버릇 들이기
 });
 
+// delete 관련 복습하기 -> 블로그 작성
 router.post("/delete", async (req, res) => {
-  await Board.destroy({ where: { id: req.body.id } });
-  res.end();
+  const tempUserName = jwt.verify(
+    req.cookies.login_success,
+    process.env.COOKIE_SECRET
+  );
+  const tempId = await Board.findOne({ where: { id: req.body.id } });
+  if (tempUserName.userName == tempId.userName) {
+    await Board.destroy({ where: { id: req.body.id } });
+    res.send({ msg: "same" });
+  } else {
+    res.send({ msg: "dif" });
+  }
 });
 
 router.post("/textdetail", async (req, res) => {
@@ -38,8 +48,6 @@ router.post("/textdetail", async (req, res) => {
 
 router.post("/editcheck", async (req, res) => {
   const textDetail = await Board.findOne({ where: { id: req.body.postId } });
-  console.log(textDetail.userName);
-  console.log(req.body.userName);
   if (textDetail.userName != req.body.userName) res.send({ msg: "dif" });
   else res.send({ msg: "same" });
 });
@@ -48,7 +56,6 @@ router.post("/edit", async (req, res) => {
   await Board.update(
     { title: req.body.title, text: req.body.text },
     { where: { id: req.body.postId } }
-    // axios에서 요청한 애들 주기
   );
   res.end();
 });

@@ -34,6 +34,7 @@ const ListComponent = ({ boardList, removePost }) => {
                 {new Date(item.createdAt).toLocaleString()}
                 {/* Date.toLocaleString() 날짜 현지화 */}
               </td>
+
               <td
                 className="writeBtn"
                 onClick={() => {

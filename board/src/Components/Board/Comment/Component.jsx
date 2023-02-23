@@ -3,6 +3,7 @@ import React, { useState } from "react";
 
 const CommentComponent = ({ onClick, commentList }) => {
   const [text, setText] = useState("");
+  // const onChange = (e) => setText(e.target.value);
 
   return (
     <CommentBox>
@@ -35,6 +36,7 @@ const CommentComponent = ({ onClick, commentList }) => {
             onClick(text);
             setText("");
           }}
+          // onChange={onChange}
         >
           Add Comment
         </button>

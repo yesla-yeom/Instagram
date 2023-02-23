@@ -11,10 +11,7 @@ const CommentContainer = ({ commentList, setCommentList }) => {
   };
 
   const onClick = async (text) => {
-    const tempAxios = await axios.post(
-      "http://localhost:8080/api/comment/comment",
-      { text }
-    );
+    await axios.post("http://localhost:8080/api/comment/comment", { text });
     await commentListUp();
   };
 

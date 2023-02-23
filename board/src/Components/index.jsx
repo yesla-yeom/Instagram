@@ -8,7 +8,6 @@ import PostContainer from "./Board/Post/Container";
 import RegistContainer from "./Users/Regist/Container";
 import styled from "styled-components";
 import HeaderContainer from "./Header/Container";
-// import AdminContainer from "./Admin/Container";
 import LogOutContainer from "./Users/LogOut/Container";
 import TextContainer from "./Board/Text/Container";
 
@@ -76,7 +75,6 @@ const Instagram = () => {
               </>
             }
           />
-          {/* 목록이 사라진 게 아님!!!!! 출력하는 컴포넌트가 달라진 것 */}
         </Routes>
       </Box>
     </>

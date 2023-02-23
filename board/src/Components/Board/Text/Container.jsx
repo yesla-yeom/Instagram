@@ -10,21 +10,18 @@ const TextContainer = ({ userName }) => {
   const [inputText, setInputText] = useState("");
   const [checkEdit, setCheckEdit] = useState(false);
   const params = useParams();
-  console.log(params.postId);
 
   const findDetail = async () => {
     const tempAxios = await axios.post(
       "http://localhost:8080/api/board/textdetail",
       {
         postId: params.postId,
-        // == userName: userName
       }
     );
     setTitleDetail(tempAxios.data.title);
     setTextDetail(tempAxios.data.text);
     setInputTitle(titleDetail);
     setInputText(textDetail);
-    // 정보 띄워줌
   };
 
   const onClick = async () => {
@@ -39,17 +36,17 @@ const TextContainer = ({ userName }) => {
     else setCheckEdit(true);
   };
 
-  const updateContent = (_inputTitle, _inputText) => {
-    axios.post("http://localhost:8080/api/board/edit", {
+  const updateContent = async (_inputTitle, _inputText) => {
+    await axios.post("http://localhost:8080/api/board/edit", {
       title: _inputTitle,
       text: _inputText,
       postId: params.postId,
     });
+    window.location.reload();
   };
 
   useEffect(() => {
     findDetail();
-    // 호출
   }, [checkEdit]);
 
   return (
