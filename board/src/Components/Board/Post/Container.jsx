@@ -8,7 +8,7 @@ const PostContainer = ({ setBoardList }) => {
   };
   const onClick = async (title, text) => {
     console.log("ㅎㅇ");
-    await axios.post("http://localhost:8080/api/board/textdetail", {
+    await axios.post("http://localhost:8080/api/board/post", {
       title: title,
       text: text,
     });

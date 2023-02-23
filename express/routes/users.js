@@ -34,11 +34,9 @@ router.post("/login", async (req, res) => {
     where: { userId: req.body.userId },
   });
   const userPw = crypto.SHA256(req.body.userPw).toString();
-  console.log(req.body.userPw);
   try {
     if (logInData) {
       if (logInData.userPw == userPw) {
-        console.log("하핳");
         res.cookie(
           "login_success",
           jwt.sign(

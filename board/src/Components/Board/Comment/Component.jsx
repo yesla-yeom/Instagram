@@ -1,12 +1,23 @@
 import styled from "styled-components";
 import React, { useState } from "react";
 
-const CommentComponent = ({ onClick }) => {
+const CommentComponent = ({ onClick, commentList }) => {
   const [text, setText] = useState("");
 
   return (
     <CommentBox>
       <CommentFrame>
+        <ListBox>
+          {commentList?.map((item, index) => (
+            <>
+              <div key={`commentList-${index}`}>
+                {item.text}
+                {item.userName}
+                {item.createdAt.slice(0, 10)}
+              </div>
+            </>
+          ))}
+        </ListBox>
         <textarea
           type={"text"}
           value={text}
@@ -18,14 +29,14 @@ const CommentComponent = ({ onClick }) => {
           cols={"10"}
           rows={"4"}
         />
-
         <button
-          className="registBtn"
+          className="commentBtn"
           onClick={() => {
             onClick(text);
+            setText("");
           }}
         >
-          Add Text
+          Add Comment
         </button>
       </CommentFrame>
     </CommentBox>
@@ -58,7 +69,7 @@ const CommentFrame = styled.div`
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
   }
 
-  & .registBtn {
+  & .commentBtn {
     font-size: 1rem;
     padding: 5px;
     border: none;
@@ -67,5 +78,17 @@ const CommentFrame = styled.div`
     border-radius: 5px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
     cursor: pointer;
+  }
+`;
+
+const ListBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  border: 1px solid #000;
+
+  div {
+    border: 1px dashed #000;
+    padding: 10px;
   }
 `;

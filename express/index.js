@@ -4,7 +4,7 @@ const dotenv = require("dotenv");
 const morgan = require("morgan");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
-const path = require("path");
+// const path = require("path");
 
 const routes = require("./routes/index.js");
 
@@ -13,7 +13,7 @@ const app = express();
 const db = require("./models/index.js");
 const { sequelize } = require("./models/index.js");
 
-app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+// app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 // 멀터로 저장한 파일을 연결해주는 라이브러리
 
 dotenv.config();

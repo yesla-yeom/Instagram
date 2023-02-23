@@ -19,6 +19,7 @@ const Instagram = () => {
   });
   const [_, setRender] = useState(false);
   const [boardList, setBoardList] = useState([]);
+  const [commentList, setCommentList] = useState([]);
 
   useEffect(() => {
     if (document.cookie) {
@@ -46,25 +47,35 @@ const Instagram = () => {
           <LogOutContainer userName={tempUser.userName} setRender={setRender} />
         )}
 
-        {tempUser.userId == "" ? (
-          <></>
-        ) : (
-          <>
-            <PostContainer setBoardList={setBoardList}></PostContainer>
-            <CommentContainer></CommentContainer>
-          </>
-        )}
         <Routes>
           <Route
             path="/"
             element={
-              <ListContainer
-                setBoardList={setBoardList}
-                boardList={boardList}
-              ></ListContainer>
+              <>
+                <ListContainer
+                  setBoardList={setBoardList}
+                  boardList={boardList}
+                />
+                {tempUser.userId == "" ? (
+                  <></>
+                ) : (
+                  <PostContainer setBoardList={setBoardList} />
+                )}
+              </>
             }
           />
-          <Route path="/post/:postId" element={<TextContainer />} />
+          <Route
+            path="/post/:postId"
+            element={
+              <>
+                <TextContainer userName={tempUser.userName} />
+                <CommentContainer
+                  setCommentList={setCommentList}
+                  commentList={commentList}
+                />
+              </>
+            }
+          />
           {/* 목록이 사라진 게 아님!!!!! 출력하는 컴포넌트가 달라진 것 */}
         </Routes>
       </Box>

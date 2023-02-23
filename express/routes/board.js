@@ -8,7 +8,6 @@ router.post("/post", async (req, res) => {
       req.cookies.login_success,
       process.env.COOKIE_SECRET
     );
-
     await Board.create({
       title: req.body.title,
       text: req.body.text,
@@ -35,6 +34,14 @@ router.post("/delete", async (req, res) => {
 router.post("/textdetail", async (req, res) => {
   const textDetail = await Board.findOne({ where: { id: req.body.postId } });
   res.send(textDetail);
+});
+
+router.post("/editcheck", async (req, res) => {
+  const textDetail = await Board.findOne({ where: { id: req.body.postId } });
+  console.log(textDetail.userName);
+  console.log(req.body.userName);
+  if (textDetail.userName != req.body.userName) res.send({ msg: "dif" });
+  else res.send({ msg: "same" });
 });
 
 router.post("/edit", async (req, res) => {

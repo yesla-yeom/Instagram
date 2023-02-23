@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-const TextContainer = () => {
+const TextContainer = ({ userName }) => {
   const [titleDetail, setTitleDetail] = useState("");
   const [textDetail, setTextDetail] = useState("");
   const [inputTitle, setInputTitle] = useState("");
@@ -17,6 +17,7 @@ const TextContainer = () => {
       "http://localhost:8080/api/board/textdetail",
       {
         postId: params.postId,
+        // == userName: userName
       }
     );
     setTitleDetail(tempAxios.data.title);
@@ -26,8 +27,16 @@ const TextContainer = () => {
     // 정보 띄워줌
   };
 
-  const onClick = () => {
-    setCheckEdit((state) => !state);
+  const onClick = async () => {
+    const tempAxios = await axios.post(
+      "http://localhost:8080/api/board/editcheck",
+      {
+        postId: params.postId,
+        userName,
+      }
+    );
+    if (tempAxios.data.msg == "dif") return;
+    else setCheckEdit(true);
   };
 
   const updateContent = (_inputTitle, _inputText) => {
@@ -54,6 +63,7 @@ const TextContainer = () => {
       onClick={onClick}
       checkEdit={checkEdit}
       updateContent={updateContent}
+      setCheckEdit={setCheckEdit}
     />
   );
 };

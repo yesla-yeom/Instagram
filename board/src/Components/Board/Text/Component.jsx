@@ -11,6 +11,7 @@ const TextComponent = ({
   onClick,
   checkEdit,
   updateContent,
+  setCheckEdit,
 }) => {
   return (
     <TextBox>
@@ -37,20 +38,29 @@ const TextComponent = ({
               onInput={(e) => {
                 setInputText(e.target.value);
               }}
-            />
+            />{" "}
+            <button
+              className="EditBtn"
+              onClick={() => {
+                updateContent(inputTitle, inputText);
+                setCheckEdit(false);
+              }}
+            >
+              찐 수정
+            </button>
           </>
         ) : (
-          <></>
+          <>
+            <button
+              className="EditBtn"
+              onClick={() => {
+                onClick();
+              }}
+            >
+              수정하러
+            </button>
+          </>
         )}
-        <button
-          className="EditBtn"
-          onClick={() => {
-            onClick();
-            updateContent(inputTitle, inputText);
-          }}
-        >
-          Edit Text
-        </button>
       </PostFrame>
     </TextBox>
   );

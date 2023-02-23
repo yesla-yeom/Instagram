@@ -1,21 +1,22 @@
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import logo from "./img/instalogo.png";
 
 const COLOR = "#921d7b";
 
 const HeaderComponent = ({ moveTo, screen650 }) => {
+  const navigate = useNavigate();
+  const goMain = () => {
+    navigate("/");
+  };
+
   return (
     <HeaderBox>
       <FuncFrame>
         <FuncBar>
           <LeftFunc>
             <HoverBox>
-              <div
-                className="colorText"
-                onClick={() => {
-                  moveTo("/");
-                }}
-              >
+              <div className="colorText" onClick={goMain}>
                 HOME
               </div>
               <div className="colorText">SEARCH</div>
@@ -32,9 +33,7 @@ const HeaderComponent = ({ moveTo, screen650 }) => {
               src={logo}
               alt=""
               style={{ width: "200px", marginLeft: "20%", cursor: "pointer" }}
-              onClick={() => {
-                moveTo("/");
-              }}
+              onClick={goMain}
             />
           </LeftFunc>
         </FuncBar>
