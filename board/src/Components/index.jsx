@@ -35,18 +35,33 @@ const Instagram = () => {
 
   return (
     <>
-      <HeaderContainer></HeaderContainer>
-      <Box>
-        {tempUser.userId == "" ? (
-          <>
-            <RegistContainer></RegistContainer>
-            <LogInContainer setRender={setRender}></LogInContainer>
-          </>
-        ) : (
-          <LogOutContainer userName={tempUser.userName} setRender={setRender} />
-        )}
-
-        <Routes>
+      <Routes>
+        <Route path="/*" element={<HeaderContainer></HeaderContainer>}></Route>
+        <Box>
+          {tempUser.userId == "" ? (
+            <>
+              <Route
+                path="/regist"
+                element={<RegistContainer></RegistContainer>}
+              ></Route>
+              <Route
+                path="/login"
+                element={
+                  <LogInContainer setRender={setRender}></LogInContainer>
+                }
+              ></Route>
+            </>
+          ) : (
+            <Route
+              path="/"
+              element={
+                <LogOutContainer
+                  userName={tempUser.userName}
+                  setRender={setRender}
+                ></LogOutContainer>
+              }
+            ></Route>
+          )}
           <Route
             path="/"
             element={
@@ -75,8 +90,8 @@ const Instagram = () => {
               </>
             }
           />
-        </Routes>
-      </Box>
+        </Box>
+      </Routes>
     </>
   );
 };
