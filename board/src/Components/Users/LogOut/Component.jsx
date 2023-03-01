@@ -1,9 +1,10 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const LogOutComponent = ({ onClick, userName }) => {
   return (
     <LogOutBox>
-      <div>{userName}님</div>{" "}
+      <div>{userName}님</div>
       <button
         className="logOutBtn"
         onClick={() => {
@@ -12,6 +13,7 @@ const LogOutComponent = ({ onClick, userName }) => {
       >
         로그아웃
       </button>
+      <Link to={`/post`}>글쓰기</Link>
     </LogOutBox>
   );
 };
@@ -34,5 +36,14 @@ const LogOutBox = styled.div`
     margin: 5px;
     cursor: pointer;
     box-shadow: 0 2px 8px rgba(232, 80, 80, 0.26);
+  }
+
+  a {
+    text-decoration: none;
+    color: purple;
+    border: 1px dashed #dadada;
+    font-weight: 700;
+    margin-top: 20px;
+    padding: 5px;
   }
 `;

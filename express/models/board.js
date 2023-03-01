@@ -7,7 +7,10 @@ module.exports = class Board extends Sequelize.Model {
         userName: {
           type: Sequelize.STRING(255),
         },
-
+        photo: {
+          type: Sequelize.STRING(255),
+          allowNull: true,
+        },
         title: {
           type: Sequelize.STRING(255),
         },

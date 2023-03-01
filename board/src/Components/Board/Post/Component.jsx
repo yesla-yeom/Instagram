@@ -4,9 +4,41 @@ import React, { useState } from "react";
 const PostComponent = ({ onClick }) => {
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
+  const [photo, setPhoto] = useState("");
+  const [photoUpload, setPhotoUpload] = useState("");
+  const [isImg, setIsImg] = useState(false);
+
+  const imgChange = (imgFile) => {
+    if (imgFile.files && imgFile.files[0]) {
+      const readImg = new FileReader();
+      readImg.onload = (e) => {
+        setPhoto(e.target.result);
+        setIsImg(true);
+      };
+      readImg.readAsDataURL(imgFile.files[0]);
+      setPhotoUpload(imgFile.files[0]);
+    } else if (imgFile.files.length === 0) {
+      setPhoto("");
+    }
+  };
 
   return (
     <PostBox>
+      <MulterName></MulterName>
+      {isImg ? <Photo src={photo}></Photo> : <></>}
+      <MulterContainer>
+        <MulterBox
+          onChange={(e) => {
+            imgChange(e.target);
+          }}
+          type={"file"}
+          name={"photoUpload"}
+          id={"photoUpload"}
+          placeholder={"사진"}
+          autocomplete={"off"}
+        />
+      </MulterContainer>
+
       <PostFrame>
         <input
           type={"text"}
@@ -26,19 +58,20 @@ const PostComponent = ({ onClick }) => {
           }}
           placeholder={"TEXT"}
           className="text"
-          cols={"80"}
+          cols={"30"}
           rows={"15"}
         />
 
         <button
           className="registBtn"
           onClick={() => {
-            onClick(title, text);
+            onClick(title, text, photoUpload);
             setTitle("");
             setText("");
+            setIsImg(false);
           }}
         >
-          Add Text
+          Add Post
         </button>
       </PostFrame>
     </PostBox>
@@ -49,7 +82,29 @@ export default PostComponent;
 
 const PostBox = styled.div`
   width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
+
+const Photo = styled.img`
+  width: 400px;
+`;
+
+const MulterName = styled.span`
+  color: grey;
+  display: flex;
+  justify-content: center;
+`;
+
+const MulterContainer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+`;
+
+const MulterBox = styled.input``;
 
 const PostFrame = styled.div`
   display: flex;
@@ -57,7 +112,7 @@ const PostFrame = styled.div`
   justify-content: center;
   align-items: center;
   text-align: center;
-  width: 40%;
+  width: 30%;
   margin: 3rem auto;
 
   & .title {

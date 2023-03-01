@@ -4,7 +4,7 @@ const dotenv = require("dotenv");
 const morgan = require("morgan");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
-// const path = require("path");
+const path = require("path");
 
 const routes = require("./routes/index.js");
 
@@ -13,7 +13,7 @@ const app = express();
 const db = require("./models/index.js");
 const { sequelize } = require("./models/index.js");
 
-// app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 // 멀터로 저장한 파일을 연결해주는 라이브러리
 
 dotenv.config();
@@ -21,6 +21,8 @@ dotenv.config();
 app.set("port", process.env.PORT || 8080);
 
 app.use(cors({ origin: "http://localhost:3000", credentials: true }));
+
+// app.use("/uploads", express.static("uploads"));
 
 app.use((req, res, next) => {
   if (process.env.NODE_ENV === "production") morgan("combined")(req, res, next);

@@ -6,7 +6,6 @@ import ListContainer from "./Board/List/Container";
 import LogInContainer from "./Users/LogIn/Container";
 import PostContainer from "./Board/Post/Container";
 import RegistContainer from "./Users/Regist/Container";
-import styled from "styled-components";
 import HeaderContainer from "./Header/Container";
 import LogOutContainer from "./Users/LogOut/Container";
 import TextContainer from "./Board/Text/Container";
@@ -35,75 +34,47 @@ const Instagram = () => {
 
   return (
     <>
+      <HeaderContainer></HeaderContainer>
       <Routes>
-        <Route path="/*" element={<HeaderContainer></HeaderContainer>}></Route>
-        <Box>
-          {tempUser.userId == "" ? (
-            <>
-              <Route
-                path="/regist"
-                element={<RegistContainer></RegistContainer>}
-              ></Route>
-              <Route
-                path="/login"
-                element={
-                  <LogInContainer setRender={setRender}></LogInContainer>
-                }
-              ></Route>
-            </>
-          ) : (
-            <Route
-              path="/"
-              element={
+        <Route path="/regist" element={<RegistContainer />} />
+        <Route
+          path="/"
+          element={
+            tempUser.userId == "" ? (
+              <LogInContainer setRender={setRender} />
+            ) : (
+              <>
                 <LogOutContainer
                   userName={tempUser.userName}
                   setRender={setRender}
                 ></LogOutContainer>
-              }
-            ></Route>
-          )}
-          <Route
-            path="/"
-            element={
-              <>
                 <ListContainer
                   setBoardList={setBoardList}
                   boardList={boardList}
                 />
-                {tempUser.userId == "" ? (
-                  <></>
-                ) : (
-                  <PostContainer setBoardList={setBoardList} />
-                )}
               </>
-            }
-          />
-          <Route
-            path="/post/:postId"
-            element={
-              <>
-                <TextContainer userName={tempUser.userName} />
-                <CommentContainer
-                  setCommentList={setCommentList}
-                  commentList={commentList}
-                />
-              </>
-            }
-          />
-        </Box>
+            )
+          }
+        />
+        <Route
+          path="/post"
+          element={<PostContainer setBoardList={setBoardList}></PostContainer>}
+        />
+        <Route
+          path="/post/:postId"
+          element={
+            <>
+              <TextContainer userName={tempUser.userName} />
+              <CommentContainer
+                setCommentList={setCommentList}
+                commentList={commentList}
+              />
+            </>
+          }
+        />
       </Routes>
     </>
   );
 };
 
 export default Instagram;
-
-const Box = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
-// const LogInRow = styled.div`
-//   display: flex;
-//   flex-direction: space-evenly;
-// `;
