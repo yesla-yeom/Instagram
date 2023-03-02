@@ -36,7 +36,6 @@ module.exports = class UserInfo extends Sequelize.Model {
     });
 
     db.UserInfo.hasMany(db.Comment, {
-      as: "UserComments",
       foreignKey: "userId",
       sourceKey: "userId",
     });

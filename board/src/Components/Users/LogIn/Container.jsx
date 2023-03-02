@@ -9,7 +9,7 @@ const LogInContainer = ({ setRender }) => {
     });
     console.log(data.data);
     if (data.data === "로그인 완료") {
-      alert("로그인 되었습니다");
+      // alert("로그인 되었습니다");
       setRender((state) => !state);
     }
   };

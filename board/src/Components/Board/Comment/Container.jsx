@@ -2,7 +2,7 @@ import CommentComponent from "./Component";
 import axios from "axios";
 import { useEffect } from "react";
 
-const CommentContainer = ({ commentList, setCommentList }) => {
+const CommentContainer = ({ commentList, setCommentList, id }) => {
   const commentListUp = async () => {
     const tempCommentAxios = await axios.post(
       "http://localhost:8080/api/comment/commentlist"
@@ -10,8 +10,8 @@ const CommentContainer = ({ commentList, setCommentList }) => {
     setCommentList(tempCommentAxios.data.list);
   };
 
-  const onClick = async (text) => {
-    await axios.post("http://localhost:8080/api/comment/comment", { text });
+  const onClick = async (text, id) => {
+    await axios.post("http://localhost:8080/api/comment/comment", { text, id });
     await commentListUp();
   };
 
@@ -19,7 +19,14 @@ const CommentContainer = ({ commentList, setCommentList }) => {
     commentListUp();
   }, []);
 
-  return <CommentComponent onClick={onClick} commentList={commentList} />;
+  return (
+    <CommentComponent
+      onClick={onClick}
+      commentList={commentList}
+      setCommentList={setCommentList}
+      id={id}
+    />
+  );
 };
 
 export default CommentContainer;

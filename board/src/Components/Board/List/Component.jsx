@@ -1,57 +1,50 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import CommentContainer from "../Comment/Container";
 
-const ListComponent = ({ boardList, removePost }) => {
+const ListComponent = ({
+  boardList,
+  removePost,
+  commentList,
+  setCommentList,
+}) => {
   console.log(boardList);
   return (
     <ListBox>
       <ListFrame>
-        {boardList?.map((item, index) => (
+        {[...boardList].reverse().map((item, index) => (
           <div>
-            <div>{item.userName}</div>
+            <Link to={`/feed`}>
+              <div>{item.userName}</div>
+            </Link>
             <div>
               <img
                 src={`http://localhost:8080/uploads/${item.photo}`}
                 alt="asd"
               />
             </div>
+
             <div>{item.title}</div>
             <div>{item.text}</div>
+            <CommentContainer
+              commentList={commentList}
+              setCommentList={setCommentList}
+              id={item.id}
+            />
+            <div className="btn">
+              <Link to={`/edit/${item.id}`}>수정</Link>
+            </div>
             <div
-              className="writeBtn"
+              className="btn"
               onClick={() => {
                 removePost(item.id);
               }}
             >
-              Del
+              삭제
             </div>
           </div>
         ))}
-
-        {/* {boardList?.map((item, index) => (
-          <tr key={`tr-${index}`}>
-            <td key={`id-${index}`}>{item.id}</td>
-            <td key={`title-${index}`}>
-              <Link to={`/post/${item.id}`}>{item.title}</Link>
-            </td>
-            <td key={`name-${index}`}>
-              {item.userName ? item.userName : "익명"}
-            </td>
-            <td key={`createdAt-${index}`}>
-              {new Date(item.createdAt).toLocaleString()}
-              {/* Date.toLocaleString() 날짜 현지화 */}
-        {/* </td>
-            <div
-              className="writeBtn"
-              onClick={() => {
-                removePost(item.id);
-              }}
-            >
-              Del
-            </div>
-          </tr> */}
-        {/* // ))} */}
       </ListFrame>
     </ListBox>
   );
@@ -77,22 +70,22 @@ const ListFrame = styled.div`
     width: 400px;
   }
 
-  & .writeBtn {
+  & .btn {
     font-size: 1rem;
     padding: 5px;
     border: none;
     border-radius: 5px;
-    margin-bottom: 50px;
     cursor: pointer;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
   }
 
-  /* th {
-    border-bottom: 1px solid black;
+  & > div > div:nth-child(6) {
+    margin-bottom: 7rem;
   }
 
-  td {
-    border-bottom: 1px dashed black;
-    text-align: center;
-  } */
+  a:first-child {
+    text-decoration: none;
+    color: black;
+    font-weight: 700;
+  }
 `;

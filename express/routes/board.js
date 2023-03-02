@@ -52,23 +52,32 @@ router.post("/delete", async (req, res) => {
   }
 });
 
-router.post("/textdetail", async (req, res) => {
-  const textDetail = await Board.findOne({ where: { id: req.body.postId } });
-  res.send(textDetail);
-});
+// router.post("/textdetail", async (req, res) => {
+//   const textDetail = await Board.findOne({ where: { id: req.body.postId } });
+//   res.send(textDetail);
+// });
 
-router.post("/editcheck", async (req, res) => {
-  const textDetail = await Board.findOne({ where: { id: req.body.postId } });
-  if (textDetail.userName != req.body.userName) res.send({ msg: "dif" });
-  else res.send({ msg: "same" });
-});
+// router.post("/editcheck", async (req, res) => {
+//   const textDetail = await Board.findOne({ where: { id: req.body.editId } });
+//   if (textDetail.userName != req.body.userName) res.send({ msg: "dif" });
+//   else res.send({ msg: "same" });
+// });
 
 router.post("/edit", async (req, res) => {
+  console.log(req.body);
   await Board.update(
     { title: req.body.title, text: req.body.text },
-    { where: { id: req.body.postId } }
+    { where: { id: req.body.editId } }
+    // postId => editId
   );
   res.end();
+});
+
+router.post("/take", async (req, res) => {
+  const tempValue = await Board.findOne({
+    where: { id: req.body.editId },
+  });
+  res.send({ tempValue: tempValue });
 });
 
 module.exports = router;

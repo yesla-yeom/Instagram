@@ -8,7 +8,7 @@ import PostContainer from "./Board/Post/Container";
 import RegistContainer from "./Users/Regist/Container";
 import HeaderContainer from "./Header/Container";
 import LogOutContainer from "./Users/LogOut/Container";
-import TextContainer from "./Board/Text/Container";
+import EditContainer from "./Board/Edit/Container";
 
 const Instagram = () => {
   const [tempUser, setUser] = useState({
@@ -47,10 +47,12 @@ const Instagram = () => {
                 <LogOutContainer
                   userName={tempUser.userName}
                   setRender={setRender}
-                ></LogOutContainer>
+                />
                 <ListContainer
                   setBoardList={setBoardList}
                   boardList={boardList}
+                  commentList={commentList}
+                  setCommentList={setCommentList}
                 />
               </>
             )
@@ -60,17 +62,10 @@ const Instagram = () => {
           path="/post"
           element={<PostContainer setBoardList={setBoardList}></PostContainer>}
         />
+
         <Route
-          path="/post/:postId"
-          element={
-            <>
-              <TextContainer userName={tempUser.userName} />
-              <CommentContainer
-                setCommentList={setCommentList}
-                commentList={commentList}
-              />
-            </>
-          }
+          path="/edit/:editId"
+          element={<EditContainer userName={tempUser.userName} />}
         />
       </Routes>
     </>

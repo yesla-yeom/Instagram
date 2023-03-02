@@ -4,9 +4,6 @@ module.exports = class Comment extends Sequelize.Model {
   static init(sequelize) {
     return super.init(
       {
-        userName: {
-          type: Sequelize.STRING(255),
-        },
         text: {
           type: Sequelize.STRING(255),
         },
@@ -29,8 +26,8 @@ module.exports = class Comment extends Sequelize.Model {
     });
 
     db.Comment.belongsTo(db.Board, {
-      foreignKey: "userId",
-      sourceKey: "userId",
+      foreignKey: "boardId",
+      sourceKey: "id",
     });
   }
 };

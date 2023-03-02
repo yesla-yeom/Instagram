@@ -1,26 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 
-const TextComponent = ({
-  titleDetail,
-  textDetail,
+const EditComponent = ({
   inputTitle,
   setInputTitle,
   inputText,
   setInputText,
-  onClick,
-  checkEdit,
   updateContent,
-  setCheckEdit,
+  takeValues,
 }) => {
+  useEffect(() => {
+    takeValues();
+  }, []);
+
   return (
     <TextBox>
-      <p>{titleDetail}</p>
-      <p>{textDetail}</p>
       <PostFrame>
-        {checkEdit ? (
+        {
           <>
-            {" "}
             <input
               type={"text"}
               value={inputTitle}
@@ -33,40 +30,28 @@ const TextComponent = ({
               type={"text"}
               value={inputText}
               className="text"
-              cols={"80"}
-              rows={"15"}
+              cols={"5"}
+              rows={"10"}
               onInput={(e) => {
                 setInputText(e.target.value);
               }}
-            />{" "}
+            />
             <button
               className="EditBtn"
               onClick={() => {
                 updateContent(inputTitle, inputText);
-                setCheckEdit(false);
               }}
             >
               찐 수정
             </button>
           </>
-        ) : (
-          <>
-            <button
-              className="EditBtn"
-              onClick={() => {
-                onClick();
-              }}
-            >
-              수정하러
-            </button>
-          </>
-        )}
+        }
       </PostFrame>
     </TextBox>
   );
 };
 
-export default TextComponent;
+export default EditComponent;
 
 const TextBox = styled.div`
   display: flex;

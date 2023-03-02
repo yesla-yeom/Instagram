@@ -37,8 +37,8 @@ module.exports = class Board extends Sequelize.Model {
       targetKey: "userId",
     });
     db.Board.hasMany(db.Comment, {
-      foreignKey: "userId",
-      targetKey: "userId",
+      foreignKey: "boardId",
+      targetKey: "id",
     });
   }
 };

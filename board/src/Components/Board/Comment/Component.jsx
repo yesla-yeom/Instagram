@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import React, { useState } from "react";
 
-const CommentComponent = ({ onClick, commentList }) => {
+const CommentComponent = ({ onClick, commentList, setCommentList, id }) => {
   const [text, setText] = useState("");
   // const onChange = (e) => setText(e.target.value);
 
@@ -9,7 +9,7 @@ const CommentComponent = ({ onClick, commentList }) => {
     <CommentBox>
       <CommentFrame>
         <ListBox>
-          {commentList?.map((item, index) => (
+          {[...commentList].map((item, index) => (
             <>
               <div key={`commentList-${index}`}>
                 {item.text}
@@ -33,7 +33,7 @@ const CommentComponent = ({ onClick, commentList }) => {
         <button
           className="commentBtn"
           onClick={() => {
-            onClick(text);
+            onClick(text, id);
             setText("");
           }}
           // onChange={onChange}

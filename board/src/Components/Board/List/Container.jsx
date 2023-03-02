@@ -1,8 +1,13 @@
 import ListComponent from "./Component";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
-const ListContainer = ({ boardList, setBoardList }) => {
+const ListContainer = ({
+  boardList,
+  setBoardList,
+  commentList,
+  setCommentList,
+}) => {
   // 큰 index.jsx에서 props로 보내고 받고 rgrg?
 
   const listUp = async () => {
@@ -26,6 +31,8 @@ const ListContainer = ({ boardList, setBoardList }) => {
     <ListComponent
       boardList={boardList}
       removePost={removePost}
+      commentList={commentList}
+      setCommentList={setCommentList}
     ></ListComponent>
   );
 };

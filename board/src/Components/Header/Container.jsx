@@ -1,4 +1,5 @@
 import HeaderComponent from "./Component";
+import LogOutContainer from "../Users/LogOut/Container";
 import { useNavigate } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 import { useState } from "react";

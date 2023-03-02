@@ -22,7 +22,6 @@ const HeaderComponent = ({ moveTo, screen650 }) => {
               <div className="colorText">SEARCH</div>
               {screen650 && (
                 <>
-                  {" "}
                   <div className="colorText">REELS</div>
                   <div>ALARM</div>
                   <div>DM</div>

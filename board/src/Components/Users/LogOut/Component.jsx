@@ -40,7 +40,7 @@ const LogOutBox = styled.div`
 
   a {
     text-decoration: none;
-    color: purple;
+    color: tomato;
     border: 1px dashed #dadada;
     font-weight: 700;
     margin-top: 20px;
