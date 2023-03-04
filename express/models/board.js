@@ -7,15 +7,52 @@ module.exports = class Board extends Sequelize.Model {
         userName: {
           type: Sequelize.STRING(255),
         },
-        photo: {
-          type: Sequelize.STRING(255),
-          allowNull: true,
-        },
+
         title: {
           type: Sequelize.STRING(255),
         },
         text: {
           type: Sequelize.STRING(255),
+        },
+        photo1: {
+          type: Sequelize.STRING(255),
+          allowNull: true,
+        },
+        photo2: {
+          type: Sequelize.STRING(255),
+          allowNull: true,
+        },
+        photo3: {
+          type: Sequelize.STRING(255),
+          allowNull: true,
+        },
+        photo4: {
+          type: Sequelize.STRING(255),
+          allowNull: true,
+        },
+        photo5: {
+          type: Sequelize.STRING(255),
+          allowNull: true,
+        },
+        photo6: {
+          type: Sequelize.STRING(255),
+          allowNull: true,
+        },
+        photo7: {
+          type: Sequelize.STRING(255),
+          allowNull: true,
+        },
+        photo8: {
+          type: Sequelize.STRING(255),
+          allowNull: true,
+        },
+        photo9: {
+          type: Sequelize.STRING(255),
+          allowNull: true,
+        },
+        photo10: {
+          type: Sequelize.STRING(255),
+          allowNull: true,
         },
       },
       {

@@ -11,7 +11,19 @@ const CommentContainer = ({ commentList, setCommentList, id }) => {
   };
 
   const onClick = async (text, id) => {
-    await axios.post("http://localhost:8080/api/comment/comment", { text, id });
+    await axios.post("http://localhost:8080/api/comment/comment", {
+      text,
+      id,
+    });
+    await commentListUp();
+  };
+
+  // 댓글,,
+  // 헤더의 로그아웃,,,
+  const removeComment = async (_id) => {
+    await axios.post("http://localhost:8080/api/comment/deletecomment", {
+      id: _id,
+    });
     await commentListUp();
   };
 
@@ -25,6 +37,7 @@ const CommentContainer = ({ commentList, setCommentList, id }) => {
       commentList={commentList}
       setCommentList={setCommentList}
       id={id}
+      removeComment={removeComment}
     />
   );
 };

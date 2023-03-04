@@ -1,7 +1,13 @@
 import styled from "styled-components";
 import React, { useState } from "react";
 
-const CommentComponent = ({ onClick, commentList, setCommentList, id }) => {
+const CommentComponent = ({
+  onClick,
+  commentList,
+  // setCommentList,
+  id,
+  removeComment,
+}) => {
   const [text, setText] = useState("");
   // const onChange = (e) => setText(e.target.value);
 
@@ -11,10 +17,20 @@ const CommentComponent = ({ onClick, commentList, setCommentList, id }) => {
         <ListBox>
           {[...commentList].map((item, index) => (
             <>
-              <div key={`commentList-${index}`}>
+              <div key={`commentList-${index}`} className="comment">
                 {item.text}
-                {item.userName}
-                {item.createdAt.slice(0, 10)}
+              </div>
+              {/* <div key={`commentList-${index}`}>{item.userName}</div> */}
+              <div key={`commentList-${index}`} className="created">
+                {item.createdAt.slice(5, 10)}
+              </div>
+              <div
+                className="deleteBtn"
+                onClick={() => {
+                  removeComment(item.id);
+                }}
+              >
+                삭제
               </div>
             </>
           ))}
@@ -59,6 +75,10 @@ const CommentFrame = styled.div`
   width: 30%;
   margin: 3rem auto;
 
+  & .comment {
+    border-bottom: #771d92;
+  }
+
   & .text {
     width: 100%;
     resize: none;
@@ -88,6 +108,11 @@ const ListBox = styled.div`
   flex-direction: column;
   text-align: center;
   border: 1px solid #000;
+
+  .deleteBtn {
+    background-color: lightgray;
+    cursor: pointer;
+  }
 
   div {
     border: 1px dashed #000;

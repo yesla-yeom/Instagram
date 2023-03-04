@@ -2,6 +2,7 @@ const router = require("express").Router();
 const Board = require("../models/board");
 const jwt = require("jsonwebtoken");
 const multer = require("multer");
+const { Op } = require("sequelize");
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -14,14 +15,32 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-router.post("/post", upload.single("photoUpload"), async (req, res) => {
+router.post("/post", upload.array("photoUpload"), async (req, res) => {
   try {
     const tempUserName = jwt.verify(
       req.cookies.login_success,
       process.env.COOKIE_SECRET
     );
+    console.log(req.files.length);
+    // let tempArr = [];
+    // for (const file of req.files) {
+    //   const fileData = {
+    //     name: file.filename,
+    //   };
+    //   tempArr.push(fileData);
+    // }
+    // for (const file of req.files) {
+    //   console.log(file);
+    //   console.log(file.filename);
+    // }
+    let tempObj = {};
+    for (let i = 0; i < req.files.length; i++) {
+      tempObj[`photo${i + 1}`] = req.files[i].filename;
+    }
+    console.log(tempObj);
+
     await Board.create({
-      photo: req.file.filename,
+      ...tempObj,
       title: req.body.title,
       text: req.body.text,
       userName: tempUserName.userName,

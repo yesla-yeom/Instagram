@@ -42,4 +42,9 @@ router.post("/commentlist", async (req, res) => {
   res.send({ list: tempList });
 });
 
+router.post("/deletecomment", async (req, res) => {
+  await Comment.destroy({ where: { id: req.body.id } });
+  res.end();
+});
+
 module.exports = router;

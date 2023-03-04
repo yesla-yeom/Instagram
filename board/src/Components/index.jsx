@@ -7,7 +7,7 @@ import LogInContainer from "./Users/LogIn/Container";
 import PostContainer from "./Board/Post/Container";
 import RegistContainer from "./Users/Regist/Container";
 import HeaderContainer from "./Header/Container";
-import LogOutContainer from "./Users/LogOut/Container";
+import LogOutContainer from "./Header/LogOut/Container";
 import EditContainer from "./Board/Edit/Container";
 
 const Instagram = () => {
@@ -34,7 +34,10 @@ const Instagram = () => {
 
   return (
     <>
-      <HeaderContainer></HeaderContainer>
+      <HeaderContainer tempUser={tempUser} setRender={setRender} />
+      {/* 수정 필요! */}
+
+      {/* 누구님 로그아웃버튼 글쓰기 */}
       <Routes>
         <Route path="/regist" element={<RegistContainer />} />
         <Route
@@ -43,18 +46,12 @@ const Instagram = () => {
             tempUser.userId == "" ? (
               <LogInContainer setRender={setRender} />
             ) : (
-              <>
-                <LogOutContainer
-                  userName={tempUser.userName}
-                  setRender={setRender}
-                />
-                <ListContainer
-                  setBoardList={setBoardList}
-                  boardList={boardList}
-                  commentList={commentList}
-                  setCommentList={setCommentList}
-                />
-              </>
+              <ListContainer
+                setBoardList={setBoardList}
+                boardList={boardList}
+                commentList={commentList}
+                setCommentList={setCommentList}
+              />
             )
           }
         />

@@ -7,6 +7,7 @@ const PostComponent = ({ onClick }) => {
   const [photo, setPhoto] = useState("");
   const [photoUpload, setPhotoUpload] = useState("");
   const [isImg, setIsImg] = useState(false);
+  const [tempArr, setArr] = useState([]);
 
   const imgChange = (imgFile) => {
     if (imgFile.files && imgFile.files[0]) {
@@ -29,6 +30,7 @@ const PostComponent = ({ onClick }) => {
       <MulterContainer>
         <MulterBox
           onChange={(e) => {
+            setArr(e.target.files);
             imgChange(e.target);
           }}
           type={"file"}
@@ -36,6 +38,7 @@ const PostComponent = ({ onClick }) => {
           id={"photoUpload"}
           placeholder={"사진"}
           autocomplete={"off"}
+          multiple
         />
       </MulterContainer>
 
@@ -65,7 +68,7 @@ const PostComponent = ({ onClick }) => {
         <button
           className="registBtn"
           onClick={() => {
-            onClick(title, text, photoUpload);
+            onClick(title, text, tempArr);
             setTitle("");
             setText("");
             setIsImg(false);

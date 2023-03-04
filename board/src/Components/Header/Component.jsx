@@ -1,10 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import logo from "./img/instalogo.png";
+import LogOutContainer from "./LogOut/Container";
 
 const COLOR = "#921d7b";
 
-const HeaderComponent = ({ moveTo, screen650 }) => {
+const HeaderComponent = ({ moveTo, screen650, tempUser, setRender }) => {
   const navigate = useNavigate();
   const goMain = () => {
     navigate("/");
@@ -31,10 +32,22 @@ const HeaderComponent = ({ moveTo, screen650 }) => {
             <img
               src={logo}
               alt=""
-              style={{ width: "200px", marginLeft: "20%", cursor: "pointer" }}
+              style={{
+                width: "300px",
+                margin: "5% 5% 5% 20%",
+                cursor: "pointer",
+              }}
               onClick={goMain}
             />
           </LeftFunc>
+          {tempUser.userId == "" ? (
+            <></>
+          ) : (
+            <LogOutContainer
+              userName={tempUser.userName}
+              setRender={setRender}
+            />
+          )}
         </FuncBar>
       </FuncFrame>
     </HeaderBox>

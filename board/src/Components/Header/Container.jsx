@@ -1,10 +1,10 @@
 import HeaderComponent from "./Component";
-import LogOutContainer from "../Users/LogOut/Container";
+import LogOutContainer from "../Header/LogOut/Container";
 import { useNavigate } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 import { useState } from "react";
 
-const HeaderContainer = () => {
+const HeaderContainer = ({ tempUser, setRender }) => {
   const [dropDown, setDropDown] = useState(false);
   const navigate = useNavigate();
   const moveTo = (where) => {
@@ -24,6 +24,8 @@ const HeaderContainer = () => {
       screen500={screen500}
       screen425={screen450}
       screen650={screen650}
+      tempUser={tempUser}
+      setRender={setRender}
     ></HeaderComponent>
   );
 };

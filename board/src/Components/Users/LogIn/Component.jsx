@@ -130,10 +130,7 @@ export default PostComponent;
 const BigBox = styled.div`
   width: 20%;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 3rem auto;
+  margin: 1rem auto;
 `;
 
 const LogInBox = styled.div`
@@ -157,7 +154,7 @@ const LogInFrame = styled.div`
     background-color: aliceblue;
     border: 1px solid #dadada80;
     border-radius: 5px;
-    margin: 20px auto 1px;
+    margin: 10% auto 1%;
     padding: 3% 10%;
   }
 
@@ -171,7 +168,7 @@ const LogInFrame = styled.div`
 
   & .logInBtn {
     font-size: 0.8rem;
-    padding: 3% 25%;
+    padding: 3% 22%;
     border: none;
     border-radius: 5px;
     margin: 3% auto 10%;
@@ -193,4 +190,9 @@ const GoRegist = styled.div`
   color: black;
   margin: 5% auto;
   padding: 5% 0;
+
+  a {
+    text-decoration: none;
+    color: #2b80e2;
+  }
 `;

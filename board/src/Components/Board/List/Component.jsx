@@ -9,7 +9,9 @@ const ListComponent = ({
   commentList,
   setCommentList,
 }) => {
-  console.log(boardList);
+  for (let i = 0; i < boardList.length; i++) {
+    console.log(boardList[i]);
+  }
   return (
     <ListBox>
       <ListFrame>
@@ -20,9 +22,13 @@ const ListComponent = ({
             </Link>
             <div>
               <img
-                src={`http://localhost:8080/uploads/${item.photo}`}
+                src={`http://localhost:8080/uploads/${item.photo1}`}
                 alt="asd"
               />
+              <img src={`http://localhost:8080/uploads/${item.photo2}`} />
+              <img src={`http://localhost:8080/uploads/${item.photo3}`} />
+              <img src={`http://localhost:8080/uploads/${item.photo4}`} />
+              <img src={`http://localhost:8080/uploads/${item.photo5}`} />
             </div>
 
             <div>{item.title}</div>
@@ -71,6 +77,11 @@ const ListFrame = styled.div`
   }
 
   & .btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 5%;
+    margin: auto;
     font-size: 1rem;
     padding: 5px;
     border: none;
@@ -79,7 +90,7 @@ const ListFrame = styled.div`
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
   }
 
-  & > div > div:nth-child(6) {
+  & > div > div:nth-child(7) {
     margin-bottom: 7rem;
   }
 

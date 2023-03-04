@@ -8,9 +8,12 @@ const PostContainer = ({ setBoardList }) => {
   };
   const onClick = async (title, text, photoUpload) => {
     let formData = new FormData();
+    console.log(photoUpload);
     formData.append("title", title);
     formData.append("text", text);
-    formData.append("photoUpload", photoUpload);
+    for (let i = 0; i < photoUpload.length; i++) {
+      formData.append("photoUpload", photoUpload[i]);
+    }
 
     await axios.post("http://localhost:8080/api/board/post", formData);
     await listUp();
