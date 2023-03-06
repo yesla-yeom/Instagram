@@ -35,9 +35,7 @@ const Instagram = () => {
   return (
     <>
       <HeaderContainer tempUser={tempUser} setRender={setRender} />
-      {/* 수정 필요! */}
 
-      {/* 누구님 로그아웃버튼 글쓰기 */}
       <Routes>
         <Route path="/regist" element={<RegistContainer />} />
         <Route

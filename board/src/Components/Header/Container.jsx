@@ -21,8 +21,8 @@ const HeaderContainer = ({ tempUser, setRender }) => {
       setDropDown={setDropDown}
       keyWord={keyWord}
       setKeyWord={setKeyWord}
-      screen500={screen500}
       screen425={screen450}
+      screen500={screen500}
       screen650={screen650}
       tempUser={tempUser}
       setRender={setRender}

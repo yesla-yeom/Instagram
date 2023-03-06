@@ -74,15 +74,12 @@ const CommentFrame = styled.div`
   align-items: center;
   width: 30%;
   margin: 3rem auto;
-
-  & .comment {
-    border-bottom: #771d92;
-  }
+  flex-wrap: nowrap;
 
   & .text {
     width: 100%;
     resize: none;
-    background-color: #771d92;
+    background-color: #e1dee2b1;
     color: white;
     border: 1 px #000;
     border-radius: 5px;
@@ -105,12 +102,11 @@ const CommentFrame = styled.div`
 
 const ListBox = styled.div`
   display: flex;
-  flex-direction: column;
   text-align: center;
   border: 1px solid #000;
 
   .deleteBtn {
-    background-color: lightgray;
+    background-color: #d3d3d387;
     cursor: pointer;
   }
 

@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const PostComponent = ({ onClick }) => {
   const [title, setTitle] = useState("");
@@ -8,6 +9,7 @@ const PostComponent = ({ onClick }) => {
   const [photoUpload, setPhotoUpload] = useState("");
   const [isImg, setIsImg] = useState(false);
   const [tempArr, setArr] = useState([]);
+  const navigate = useNavigate();
 
   const imgChange = (imgFile) => {
     if (imgFile.files && imgFile.files[0]) {
@@ -72,6 +74,7 @@ const PostComponent = ({ onClick }) => {
             setTitle("");
             setText("");
             setIsImg(false);
+            navigate("/");
           }}
         >
           Add Post

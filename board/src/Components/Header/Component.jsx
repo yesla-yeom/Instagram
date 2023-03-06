@@ -1,45 +1,78 @@
+// import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import logo from "./img/instalogo.png";
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import LogOutContainer from "./LogOut/Container";
 
-const COLOR = "#921d7b";
+const COLOR = "#1070c4a9";
 
-const HeaderComponent = ({ moveTo, screen650, tempUser, setRender }) => {
+const HeaderComponent = ({
+  screen450,
+  screen500,
+  screen650,
+  tempUser,
+  setRender,
+}) => {
   const navigate = useNavigate();
   const goMain = () => {
     navigate("/");
   };
 
+  // const [view, setView] = useState(false);
+  // 크기 줄이면 (500이 되면) 다운화살표 생기고
+  // ~님 로그아웃 버튼 사라지고
+  // 다운화살표 누르면 팝업 뜨게
+  // 근데 이걸 반응형이랑 어떻게 합치(?)는지 모르겠음!
+
+  // 반응형라이브러리 말고 CSS(스타일컴포넌트)로
+
+  // 직접 슬라이드 구현
+
   return (
     <HeaderBox>
       <FuncFrame>
-        <FuncBar>
-          <LeftFunc>
-            <HoverBox>
-              <div className="colorText" onClick={goMain}>
-                HOME
-              </div>
-              <div className="colorText">SEARCH</div>
-              {screen650 && (
-                <>
-                  <div className="colorText">REELS</div>
-                  <div>ALARM</div>
-                  <div>DM</div>
-                </>
-              )}
-            </HoverBox>
+        <LeftFunc>
+          <HoverBox>
+            {screen450 && (
+              <>
+                <div className="colorText" onClick={goMain}>
+                  HOME
+                </div>
+                <div className="colorText">SEARCH</div>
+              </>
+            )}
+            {screen650 && (
+              <>
+                <div className="colorText">REELS</div>
+                <div>ALARM</div>
+                <div>DM</div>
+              </>
+            )}
+          </HoverBox>
+          {screen650 ? (
             <img
               src={logo}
               alt=""
               style={{
-                width: "300px",
-                margin: "5% 5% 5% 20%",
+                width: "15vw",
+                margin: "5%",
                 cursor: "pointer",
               }}
               onClick={goMain}
             />
-          </LeftFunc>
+          ) : (
+            <img
+              src={logo}
+              alt=""
+              style={{
+                width: "20vw",
+                margin: "5%",
+                cursor: "pointer",
+              }}
+              onClick={goMain}
+            />
+          )}
           {tempUser.userId == "" ? (
             <></>
           ) : (
@@ -48,7 +81,15 @@ const HeaderComponent = ({ moveTo, screen650, tempUser, setRender }) => {
               setRender={setRender}
             />
           )}
-        </FuncBar>
+          {screen500 ? (
+            <></>
+          ) : (
+            <ArrowDropDownIcon
+              // onClick={goMain}
+              style={{ cursor: "pointer" }}
+            ></ArrowDropDownIcon>
+          )}
+        </LeftFunc>
       </FuncFrame>
     </HeaderBox>
   );
@@ -57,9 +98,9 @@ const HeaderComponent = ({ moveTo, screen650, tempUser, setRender }) => {
 export default HeaderComponent;
 
 const HeaderBox = styled.div`
-  display: flex;
-  align-items: center;
-  flex-direction: column;
+  /* display: flex;
+  align-items: center; */
+  width: 100%;
   border-bottom: solid 2px ${COLOR};
 `;
 
@@ -67,16 +108,6 @@ const FuncFrame = styled.div`
   display: flex;
   justify-content: center;
   width: 100%;
-
-  border-top: solid 1px lightgray;
-`;
-
-const FuncBar = styled.div`
-  width: 100%;
-  max-width: 1268px;
-  display: flex;
-  min-width: 360px;
-  justify-content: space-between;
 `;
 
 const HoverBox = styled.div`

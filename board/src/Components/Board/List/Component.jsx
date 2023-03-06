@@ -9,29 +9,27 @@ const ListComponent = ({
   commentList,
   setCommentList,
 }) => {
-  for (let i = 0; i < boardList.length; i++) {
-    console.log(boardList[i]);
-  }
   return (
     <ListBox>
       <ListFrame>
         {[...boardList].reverse().map((item, index) => (
           <div>
-            <Link to={`/feed`}>
-              <div>{item.userName}</div>
-            </Link>
+            {/* <Link to={`/feed`}> */}
+            <div className="userName">{item.userName}</div>
+            {/* </Link> */}
             <div>
-              <img
-                src={`http://localhost:8080/uploads/${item.photo1}`}
-                alt="asd"
-              />
-              <img src={`http://localhost:8080/uploads/${item.photo2}`} />
-              <img src={`http://localhost:8080/uploads/${item.photo3}`} />
-              <img src={`http://localhost:8080/uploads/${item.photo4}`} />
-              <img src={`http://localhost:8080/uploads/${item.photo5}`} />
+              {[...new Array(10)].map(
+                (_, idx) =>
+                  item[`photo${idx + 1}`] && (
+                    <img
+                      src={`http://localhost:8080/uploads/${
+                        item[`photo${idx + 1}`]
+                      }`}
+                    />
+                  )
+              )}
             </div>
-
-            <div>{item.title}</div>
+            <div className="title">{item.title}</div>
             <div>{item.text}</div>
             <CommentContainer
               commentList={commentList}
@@ -72,8 +70,19 @@ const ListFrame = styled.div`
   padding: 3rem;
   text-align: center;
 
+  & .userName {
+    font-weight: 900;
+    font-size: x-large;
+    color: #178cdf;
+  }
+
   & img {
     width: 400px;
+  }
+
+  & .title {
+    font-weight: 900;
+    color: #00000093;
   }
 
   & .btn {
@@ -97,6 +106,5 @@ const ListFrame = styled.div`
   a:first-child {
     text-decoration: none;
     color: black;
-    font-weight: 700;
   }
 `;

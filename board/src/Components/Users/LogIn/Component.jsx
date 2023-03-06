@@ -9,7 +9,7 @@ import { useMediaQuery } from "react-responsive";
 const PostComponent = ({ logInClick }) => {
   const [userId, setUserId] = useState("");
   const [userPw, setUserPw] = useState("");
-  const screen850 = useMediaQuery({ minWidth: 850 });
+  const screen850 = useMediaQuery({ minWidth: 900 });
 
   return (
     <div style={{ display: "flex" }}>
