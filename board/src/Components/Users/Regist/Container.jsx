@@ -1,7 +1,7 @@
 import RegistComponent from "./Component";
 import axios from "axios";
 
-const RegistContainer = () => {
+const RegistContainer = ({ theme }) => {
   const onClick = (userId, userPw, userName) => {
     axios.post("http://localhost:8080/api/users/regist", {
       userId,
@@ -10,7 +10,7 @@ const RegistContainer = () => {
     });
   };
 
-  return <RegistComponent onClick={onClick} />;
+  return <RegistComponent onClick={onClick} theme={theme} />;
 };
 
 export default RegistContainer;

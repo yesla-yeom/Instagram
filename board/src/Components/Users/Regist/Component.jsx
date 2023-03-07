@@ -1,14 +1,14 @@
 import { useState } from "react";
 import styled from "styled-components";
 
-const RegistComponent = ({ onClick }) => {
+const RegistComponent = ({ onClick, theme }) => {
   const [userId, setUserId] = useState("");
   const [userPw, setUserPw] = useState("");
   const [userName, setUserName] = useState("");
 
   return (
     <RegistBox>
-      <RegistFrame>
+      <RegistFrame theme={theme}>
         <input
           type={"text"}
           value={userId}
@@ -102,5 +102,10 @@ const RegistFrame = styled.div`
     margin: 5px;
     cursor: pointer;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  }
+
+  @media ${(props) => props.theme.mobileS} {
+    width: fit-content;
+    margin: 0 auto;
   }
 `;

@@ -7,6 +7,7 @@ const ListContainer = ({
   setBoardList,
   commentList,
   setCommentList,
+  theme,
 }) => {
   // 큰 index.jsx에서 props로 보내고 받고 rgrg?
 
@@ -33,6 +34,7 @@ const ListContainer = ({
       removePost={removePost}
       commentList={commentList}
       setCommentList={setCommentList}
+      theme={theme}
     ></ListComponent>
   );
 };

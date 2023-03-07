@@ -13,6 +13,7 @@ const HeaderComponent = ({
   screen650,
   tempUser,
   setRender,
+  theme,
 }) => {
   const navigate = useNavigate();
   const goMain = () => {
@@ -22,12 +23,10 @@ const HeaderComponent = ({
   // const [view, setView] = useState(false);
   // 크기 줄이면 (500이 되면) 다운화살표 생기고
   // ~님 로그아웃 버튼 사라지고
-  // 다운화살표 누르면 팝업 뜨게
+  // 다운화살표 누르면 팝업 뜨게 setView(true)
   // 근데 이걸 반응형이랑 어떻게 합치(?)는지 모르겠음!
 
   // 반응형라이브러리 말고 CSS(스타일컴포넌트)로
-
-  // 직접 슬라이드 구현
 
   return (
     <HeaderBox>
@@ -79,6 +78,7 @@ const HeaderComponent = ({
             <LogOutContainer
               userName={tempUser.userName}
               setRender={setRender}
+              theme={theme}
             />
           )}
           {screen500 ? (

@@ -1,7 +1,7 @@
 import axios from "axios";
 import LogOutComponent from "./Component";
 
-const LogOutContainer = ({ userName, setRender }) => {
+const LogOutContainer = ({ userName, theme }) => {
   const onClick = async () => {
     const data = await axios.post("http://localhost:8080/api/users/logout");
 
@@ -10,7 +10,9 @@ const LogOutContainer = ({ userName, setRender }) => {
     }
   };
 
-  return <LogOutComponent userName={userName} onClick={onClick} />;
+  return (
+    <LogOutComponent userName={userName} onClick={onClick} theme={theme} />
+  );
 };
 
 export default LogOutContainer;

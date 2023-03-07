@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 import { useState } from "react";
 
-const HeaderContainer = ({ tempUser, setRender }) => {
+const HeaderContainer = ({ tempUser, setRender, theme }) => {
   const [dropDown, setDropDown] = useState(false);
   const navigate = useNavigate();
   const moveTo = (where) => {
@@ -26,6 +26,7 @@ const HeaderContainer = ({ tempUser, setRender }) => {
       screen650={screen650}
       tempUser={tempUser}
       setRender={setRender}
+      theme={theme}
     ></HeaderComponent>
   );
 };

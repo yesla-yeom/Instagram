@@ -64,7 +64,7 @@ const CommentComponent = ({
 export default CommentComponent;
 
 const CommentBox = styled.div`
-  width: 100vw;
+  width: 100%;
 `;
 
 const CommentFrame = styled.div`
@@ -72,7 +72,7 @@ const CommentFrame = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 30%;
+  width: 100%;
   margin: 3rem auto;
   flex-wrap: nowrap;
 

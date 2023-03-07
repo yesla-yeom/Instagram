@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-const EditContainer = ({ userName }) => {
+const EditContainer = ({ userName, theme }) => {
   const [inputTitle, setInputTitle] = useState("");
   const [inputText, setInputText] = useState("");
   const params = useParams();
@@ -38,6 +38,7 @@ const EditContainer = ({ userName }) => {
       setInputText={setInputText}
       updateContent={updateContent}
       takeValues={takeValues}
+      theme={theme}
     />
   );
 };

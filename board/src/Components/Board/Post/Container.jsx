@@ -1,7 +1,7 @@
 import PostComponent from "./Component";
 import axios from "axios";
 
-const PostContainer = ({ setBoardList }) => {
+const PostContainer = ({ setBoardList, theme }) => {
   const listUp = async () => {
     const tempAxios = await axios.post("http://localhost:8080/api/board/list");
     console.log(tempAxios.data.list);
@@ -19,7 +19,7 @@ const PostContainer = ({ setBoardList }) => {
     await axios.post("http://localhost:8080/api/board/post", formData);
     await listUp();
   };
-  return <PostComponent onClick={onClick}></PostComponent>;
+  return <PostComponent onClick={onClick} theme={theme}></PostComponent>;
 };
 
 export default PostContainer;

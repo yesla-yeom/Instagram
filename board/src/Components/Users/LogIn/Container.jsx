@@ -1,7 +1,7 @@
 import axios from "axios";
 import LogInComponent from "./Component";
 
-const LogInContainer = ({ setRender }) => {
+const LogInContainer = ({ setRender, theme }) => {
   const onClick = async (userId, userPw) => {
     const data = await axios.post("http://localhost:8080/api/users/login", {
       userId: userId,
@@ -14,7 +14,7 @@ const LogInContainer = ({ setRender }) => {
     }
   };
 
-  return <LogInComponent logInClick={onClick}></LogInComponent>;
+  return <LogInComponent logInClick={onClick} theme={theme}></LogInComponent>;
 };
 
 export default LogInContainer;

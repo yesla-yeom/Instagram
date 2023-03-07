@@ -2,7 +2,7 @@ import CommentComponent from "./Component";
 import axios from "axios";
 import { useEffect } from "react";
 
-const CommentContainer = ({ commentList, setCommentList, id }) => {
+const CommentContainer = ({ commentList, setCommentList, id, theme }) => {
   const commentListUp = async () => {
     const tempCommentAxios = await axios.post(
       "http://localhost:8080/api/comment/commentlist"
@@ -18,8 +18,6 @@ const CommentContainer = ({ commentList, setCommentList, id }) => {
     await commentListUp();
   };
 
-  // 댓글,,
-  // 헤더의 로그아웃,,,
   const removeComment = async (_id) => {
     await axios.post("http://localhost:8080/api/comment/deletecomment", {
       id: _id,
@@ -38,6 +36,7 @@ const CommentContainer = ({ commentList, setCommentList, id }) => {
       setCommentList={setCommentList}
       id={id}
       removeComment={removeComment}
+      theme={theme}
     />
   );
 };

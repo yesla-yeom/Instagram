@@ -10,7 +10,7 @@ import HeaderContainer from "./Header/Container";
 import LogOutContainer from "./Header/LogOut/Container";
 import EditContainer from "./Board/Edit/Container";
 
-const Instagram = () => {
+const Yestagram = ({ theme }) => {
   const [tempUser, setUser] = useState({
     userId: "",
     userName: "",
@@ -34,37 +34,47 @@ const Instagram = () => {
 
   return (
     <>
-      <HeaderContainer tempUser={tempUser} setRender={setRender} />
+      <HeaderContainer
+        tempUser={tempUser}
+        setRender={setRender}
+        theme={theme}
+      />
 
       <Routes>
-        <Route path="/regist" element={<RegistContainer />} />
+        <Route path="/regist" element={<RegistContainer theme={theme} />} />
         <Route
           path="/"
           element={
             tempUser.userId == "" ? (
-              <LogInContainer setRender={setRender} />
+              <LogInContainer setRender={setRender} theme={theme} />
             ) : (
               <ListContainer
                 setBoardList={setBoardList}
                 boardList={boardList}
                 commentList={commentList}
                 setCommentList={setCommentList}
+                theme={theme}
               />
             )
           }
         />
         <Route
           path="/post"
-          element={<PostContainer setBoardList={setBoardList}></PostContainer>}
+          element={
+            <PostContainer
+              setBoardList={setBoardList}
+              theme={theme}
+            ></PostContainer>
+          }
         />
 
         <Route
           path="/edit/:editId"
-          element={<EditContainer userName={tempUser.userName} />}
+          element={<EditContainer userName={tempUser.userName} theme={theme} />}
         />
       </Routes>
     </>
   );
 };
 
-export default Instagram;
+export default Yestagram;
