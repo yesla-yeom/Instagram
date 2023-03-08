@@ -67,7 +67,6 @@ module.exports = class Board extends Sequelize.Model {
     );
   }
 
-  // board 여러 개 // userInfo 1개
   static associate(db) {
     db.Board.belongsTo(db.UserInfo, {
       foreignKey: "userId",

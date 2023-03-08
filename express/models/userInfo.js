@@ -29,9 +29,7 @@ module.exports = class UserInfo extends Sequelize.Model {
   static associate(db) {
     db.UserInfo.hasMany(db.Board, {
       as: "UserBoards",
-      // as: 변수명 / 사용법 => addUserBoards (belongsTo는 X)
       foreignKey: "userId",
-      // board table db에 새로 생성되는 컬럼명 (신기)
       sourceKey: "userId",
     });
 

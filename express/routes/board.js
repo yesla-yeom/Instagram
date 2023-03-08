@@ -22,22 +22,10 @@ router.post("/post", upload.array("photoUpload"), async (req, res) => {
       process.env.COOKIE_SECRET
     );
     console.log(req.files.length);
-    // let tempArr = [];
-    // for (const file of req.files) {
-    //   const fileData = {
-    //     name: file.filename,
-    //   };
-    //   tempArr.push(fileData);
-    // }
-    // for (const file of req.files) {
-    //   console.log(file);
-    //   console.log(file.filename);
-    // }
     let tempObj = {};
     for (let i = 0; i < req.files.length; i++) {
       tempObj[`photo${i + 1}`] = req.files[i].filename;
     }
-    console.log(tempObj);
 
     await Board.create({
       ...tempObj,
@@ -71,23 +59,11 @@ router.post("/delete", async (req, res) => {
   }
 });
 
-// router.post("/textdetail", async (req, res) => {
-//   const textDetail = await Board.findOne({ where: { id: req.body.postId } });
-//   res.send(textDetail);
-// });
-
-// router.post("/editcheck", async (req, res) => {
-//   const textDetail = await Board.findOne({ where: { id: req.body.editId } });
-//   if (textDetail.userName != req.body.userName) res.send({ msg: "dif" });
-//   else res.send({ msg: "same" });
-// });
-
 router.post("/edit", async (req, res) => {
   console.log(req.body);
   await Board.update(
     { title: req.body.title, text: req.body.text },
     { where: { id: req.body.editId } }
-    // postId => editId
   );
   res.end();
 });

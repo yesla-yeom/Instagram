@@ -1,77 +1,75 @@
-// import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import logo from "./img/instalogo.png";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import LogOutContainer from "./LogOut/Container";
 
-const COLOR = "#1070c4a9";
+const COLOR = "#2c82c9";
 
 const HeaderComponent = ({
-  screen450,
-  screen500,
-  screen650,
+  screen770,
   tempUser,
   setRender,
   theme,
+  dropDownFunc,
+  dropDown,
+  onClick,
 }) => {
   const navigate = useNavigate();
   const goMain = () => {
     navigate("/");
   };
-
-  // const [view, setView] = useState(false);
-  // 크기 줄이면 (500이 되면) 다운화살표 생기고
-  // ~님 로그아웃 버튼 사라지고
-  // 다운화살표 누르면 팝업 뜨게 setView(true)
-  // 근데 이걸 반응형이랑 어떻게 합치(?)는지 모르겠음!
-
-  // 반응형라이브러리 말고 CSS(스타일컴포넌트)로
+  const goPost = () => {
+    navigate("/post");
+  };
 
   return (
     <HeaderBox>
       <FuncFrame>
         <LeftFunc>
           <HoverBox>
-            {screen450 && (
+            {screen770 ? (
               <>
                 <div className="colorText" onClick={goMain}>
                   HOME
                 </div>
                 <div className="colorText">SEARCH</div>
-              </>
-            )}
-            {screen650 && (
-              <>
                 <div className="colorText">REELS</div>
-                <div>ALARM</div>
-                <div>DM</div>
+              </>
+            ) : (
+              <>
+                <ArrowDropDownIcon
+                  className="arrowDown"
+                  onClick={dropDownFunc}
+                ></ArrowDropDownIcon>
+
+                <div className={dropDown ? "dropList" : "dropListOff"}>
+                  <div>
+                    <li className="dropDownColorText" onClick={goMain}>
+                      HOME
+                    </li>
+                    <li className="dropDownColorText">SEARCH</li>
+                    <li className="dropDownColorText">REELS</li>
+                    {tempUser.userId == "" ? (
+                      <></>
+                    ) : (
+                      <>
+                        <li onClick={goPost}>글쓰기</li>
+                        <li onClick={onClick}>로그아웃</li>
+                      </>
+                    )}
+                  </div>
+                </div>
               </>
             )}
           </HoverBox>
-          {screen650 ? (
-            <img
-              src={logo}
-              alt=""
-              style={{
-                width: "15vw",
-                margin: "5%",
-                cursor: "pointer",
-              }}
-              onClick={goMain}
-            />
-          ) : (
-            <img
-              src={logo}
-              alt=""
-              style={{
-                width: "20vw",
-                margin: "5%",
-                cursor: "pointer",
-              }}
-              onClick={goMain}
-            />
-          )}
+          <div className="logoBox">
+            {screen770 ? (
+              <img src={logo} alt="" className="logoImage" onClick={goMain} />
+            ) : (
+              <img src={logo} alt="" className="logoImage" onClick={goMain} />
+            )}
+          </div>
           {tempUser.userId == "" ? (
             <></>
           ) : (
@@ -79,15 +77,8 @@ const HeaderComponent = ({
               userName={tempUser.userName}
               setRender={setRender}
               theme={theme}
+              screen770={screen770}
             />
-          )}
-          {screen500 ? (
-            <></>
-          ) : (
-            <ArrowDropDownIcon
-              // onClick={goMain}
-              style={{ cursor: "pointer" }}
-            ></ArrowDropDownIcon>
           )}
         </LeftFunc>
       </FuncFrame>
@@ -98,10 +89,13 @@ const HeaderComponent = ({
 export default HeaderComponent;
 
 const HeaderBox = styled.div`
-  /* display: flex;
-  align-items: center; */
   width: 100%;
   border-bottom: solid 2px ${COLOR};
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 30;
+  background-color: rgba(255, 255, 255, 1);
 `;
 
 const FuncFrame = styled.div`
@@ -119,15 +113,122 @@ const HoverBox = styled.div`
     font-weight: 900;
     padding: 15px;
   }
-  div:hover {
+
+  & .colorText:hover {
     color: white;
     background-color: ${COLOR};
   }
   & .colorText {
     color: ${COLOR};
   }
+
+  & .dropListOff {
+    font-size: 0.7rem;
+  }
+
+  @media ${(props) => props.theme.mobileL} {
+    width: 40%;
+    position: relative;
+    flex-direction: column;
+
+    & .arrowDown {
+      cursor: pointer;
+      position: absolute;
+      left: 13%;
+      top: 3%;
+      z-index: 20;
+      padding: 0;
+    }
+
+    & .dropList {
+      position: relative;
+      top: -8%;
+      left: -26%;
+      font-size: 0.7rem;
+    }
+
+    & .dropListOff {
+      opacity: 0;
+    }
+
+    & .colorText {
+      display: none;
+    }
+
+    li {
+      list-style: none;
+      padding: 2px 0;
+    }
+  }
+
+  @media ${(props) => props.theme.mobileM} {
+    width: 40%;
+    position: relative;
+    flex-direction: column;
+
+    & .arrowDown {
+      left: 12%;
+      top: 3%;
+    }
+
+    & .dropList {
+      top: -8%;
+      left: -20%;
+    }
+  }
+
+  @media ${(props) => props.theme.mobileS} {
+    width: 40%;
+    position: relative;
+    flex-direction: column;
+
+    & .arrowDown {
+      left: 10%;
+      top: 3%;
+    }
+
+    & .dropList {
+      top: -8%;
+      left: -16%;
+    }
+  }
 `;
 
 const LeftFunc = styled.div`
   display: flex;
+  width: 60%;
+
+  & .logoBox {
+    width: 30%;
+    margin: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+  }
+
+  & .logoImage {
+    width: 100%;
+  }
+
+  @media ${(props) => props.theme.tabletS} {
+    width: 100%;
+    margin: 0 auto;
+
+    & .logoBox {
+      width: 30%;
+      margin: 0;
+    }
+  }
+
+  @media ${(props) => props.theme.mobileM} {
+    & .logoBox {
+      width: 40%;
+    }
+  }
+
+  @media ${(props) => props.theme.mobileL} {
+    & .logoImage {
+      width: 80%;
+    }
+  }
 `;

@@ -1,27 +1,17 @@
 import styled from "styled-components";
 import React, { useState } from "react";
 
-const CommentComponent = ({
-  onClick,
-  commentList,
-  // setCommentList,
-  id,
-  removeComment,
-}) => {
+const CommentComponent = ({ onClick, commentList, id, removeComment }) => {
   const [text, setText] = useState("");
-  // const onChange = (e) => setText(e.target.value);
 
   return (
     <CommentBox>
       <CommentFrame>
         <ListBox>
           {[...commentList].map((item, index) => (
-            <>
-              <div key={`commentList-${index}`} className="comment">
-                {item.text}
-              </div>
-              {/* <div key={`commentList-${index}`}>{item.userName}</div> */}
-              <div key={`commentList-${index}`} className="created">
+            <ItemBox>
+              <div key={`commentList-${index}`}>{item.text}</div>
+              <div key={`commentList-${index}`}>
                 {item.createdAt.slice(5, 10)}
               </div>
               <div
@@ -32,7 +22,7 @@ const CommentComponent = ({
               >
                 삭제
               </div>
-            </>
+            </ItemBox>
           ))}
         </ListBox>
         <textarea
@@ -52,7 +42,6 @@ const CommentComponent = ({
             onClick(text, id);
             setText("");
           }}
-          // onChange={onChange}
         >
           Add Comment
         </button>
@@ -80,7 +69,7 @@ const CommentFrame = styled.div`
     width: 100%;
     resize: none;
     background-color: #e1dee2b1;
-    color: white;
+    color: #000000;
     border: 1 px #000;
     border-radius: 5px;
     margin: 10px;
@@ -101,7 +90,6 @@ const CommentFrame = styled.div`
 `;
 
 const ListBox = styled.div`
-  display: flex;
   text-align: center;
   border: 1px solid #000;
 
@@ -114,4 +102,15 @@ const ListBox = styled.div`
     border: 1px dashed #000;
     padding: 10px;
   }
+
+  @media ${(props) => props.theme.mobileM} {
+    margin: 0 auto;
+  }
+`;
+
+const ItemBox = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 `;

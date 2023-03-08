@@ -1,19 +1,21 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-const LogOutComponent = ({ onClick, userName }) => {
+const LogOutComponent = ({ onClick, userName, screen770 }) => {
   return (
     <LogOutBox>
-      <Link to={`/post`}>글쓰기</Link>
+      {screen770 && <Link to={`/post`}>글쓰기</Link>}
       <div>{userName}님</div>
-      <button
-        className="logOutBtn"
-        onClick={() => {
-          onClick();
-        }}
-      >
-        로그아웃
-      </button>
+      {screen770 && (
+        <button
+          className="logOutBtn"
+          onClick={() => {
+            onClick();
+          }}
+        >
+          로그아웃
+        </button>
+      )}
     </LogOutBox>
   );
 };
@@ -21,11 +23,10 @@ const LogOutComponent = ({ onClick, userName }) => {
 export default LogOutComponent;
 
 const LogOutBox = styled.div`
-  width: 100%;
+  width: 40%;
   display: flex;
   justify-content: center;
   align-items: center;
-  /* margin: 3rem 0 3rem 10rem; */
   flex-wrap: nowrap;
 
   div {

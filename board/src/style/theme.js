@@ -10,12 +10,6 @@ const size = {
 };
 
 const theme = {
-  mainColor: "#0a4297",
-  subColor: "#0086ec",
-  plusColor: "#21b36",
-  minusColor: "#174ca2",
-  noChangeColor: "#022553",
-  backgroundColor: "#f7fbff",
   mobileS: `(max-width: ${size.mobileS})`,
   mobileM: `(max-width: ${size.mobileM})`,
   mobileL: `(max-width: ${size.mobileL})`,

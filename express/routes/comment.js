@@ -26,11 +26,8 @@ router.post("/comment", async (req, res) => {
     tempUser.addComment(tempComment);
     tempBoard.addComment(tempComment);
 
-    // 관계형 생성
-
     const tempCommentList = await Comment.findAll();
     res.send({ list: tempCommentList });
-    // res.end();
   } catch (err) {
     console.log(err);
     res.send(err);

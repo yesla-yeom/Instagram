@@ -3,7 +3,7 @@ import axios from "axios";
 
 const RegistContainer = ({ theme }) => {
   const onClick = (userId, userPw, userName) => {
-    axios.post("http://localhost:8080/api/users/regist", {
+    axios.post("http://192.168.0.242:8080/api/users/regist", {
       userId,
       userPw,
       userName,

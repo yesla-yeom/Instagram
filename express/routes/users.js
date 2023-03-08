@@ -4,8 +4,6 @@ const jwt = require("jsonwebtoken");
 const { UserInfo } = require("../models");
 
 const router = require("express").Router();
-// const userArr = [];
-// const user = {};
 
 router.post("/regist", async (req, res) => {
   try {
@@ -24,7 +22,6 @@ router.post("/regist", async (req, res) => {
       res.send({ status: 200 });
     }
   } catch (err) {
-    console.error(err);
     res.send("failed");
   }
 });
@@ -56,7 +53,6 @@ router.post("/login", async (req, res) => {
       res.send("없는 아이디");
     }
   } catch (err) {
-    console.error(err);
     res.send("failed");
   }
 });

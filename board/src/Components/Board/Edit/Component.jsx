@@ -42,7 +42,7 @@ const EditComponent = ({
                 updateContent(inputTitle, inputText);
               }}
             >
-              찐 수정
+              수정
             </button>
           </>
         }
@@ -92,7 +92,7 @@ const PostFrame = styled.div`
   & .text {
     width: 100%;
     resize: none;
-    background-color: #921d7b;
+    background-color: #2c82c9;
     color: white;
     border: 1 px #000;
     border-radius: 5px;
@@ -110,5 +110,15 @@ const PostFrame = styled.div`
     border-radius: 5px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
     cursor: pointer;
+  }
+
+  @media ${(props) => props.theme.tabletL} {
+    width: 70%;
+    margin: 10% auto;
+  }
+
+  @media ${(props) => props.theme.mobileL} {
+    width: 100%;
+    margin: 10% auto;
   }
 `;

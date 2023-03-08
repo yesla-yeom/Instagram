@@ -23,11 +23,11 @@ const ListComponent = ({
     <ListBox>
       <ListFrame theme={theme}>
         {[...boardList].reverse().map((item, index) => (
-          <div style={{ width: "100%" }}>
-            {/* <Link to={`/feed`}> */}
-            <div className="userName">{item.userName}</div>
-            {/* </Link> */}
-            <div className="swiperBox">
+          <div style={{ width: "100%" }} key={`boardListBox - ${index}`}>
+            <div className="userName" key={`boardBox - ${index}`}>
+              {item.userName}
+            </div>
+            <div className="swiperBox" key={`innerText - ${index}`}>
               <Swiper
                 pagination={{
                   type: "progressbar",
@@ -41,7 +41,7 @@ const ListComponent = ({
                     item[`photo${idx + 1}`] && (
                       <SwiperSlide>
                         <img
-                          src={`http://localhost:8080/uploads/${
+                          src={`http://192.168.0.242:8080/uploads/${
                             item[`photo${idx + 1}`]
                           }`}
                         />
@@ -79,6 +79,7 @@ export default ListComponent;
 
 const ListBox = styled.div`
   width: 100vw;
+  margin-top: 20%;
 `;
 
 const ListFrame = styled.div`
@@ -95,6 +96,18 @@ const ListFrame = styled.div`
     width: 100%;
     position: relative;
     margin: 0 auto;
+
+    & .swiper-button-prev,
+    .swiper-button-next {
+      z-index: 10;
+    }
+
+    @media ${(props) => props.theme.mobileL} {
+      & .swiper-button-prev,
+      .swiper-button-next {
+        display: none;
+      }
+    }
   }
 
   & .userName {
@@ -102,10 +115,6 @@ const ListFrame = styled.div`
     font-size: x-large;
     color: #178cdf;
   }
-
-  /* & img {
-    width: 400px;
-  } */
 
   & .title {
     font-weight: 900;
@@ -135,11 +144,12 @@ const ListFrame = styled.div`
     color: black;
   }
 
-  @media ${(props) => props.theme.mobileM} {
-    width: 100px;
+  @media ${(props) => props.theme.tabletS} {
+    width: 80%;
     margin: 0 auto;
   }
+
+  @media ${(props) => props.theme.mobileM} {
+    width: 100%;
+  }
 `;
-// item[`photo${idx + 1}`] && (
-//   <SlideContainer item={item[`photo${idx + 1}`]} />
-// )

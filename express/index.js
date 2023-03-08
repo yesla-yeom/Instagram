@@ -14,15 +14,12 @@ const db = require("./models/index.js");
 const { sequelize } = require("./models/index.js");
 
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
-// 멀터로 저장한 파일을 연결해주는 라이브러리
 
 dotenv.config();
 
 app.set("port", process.env.PORT || 8080);
 
-app.use(cors({ origin: "http://localhost:3000", credentials: true }));
-
-// app.use("/uploads", express.static("uploads"));
+app.use(cors({ origin: "http://192.168.0.242:3000", credentials: true }));
 
 app.use((req, res, next) => {
   if (process.env.NODE_ENV === "production") morgan("combined")(req, res, next);

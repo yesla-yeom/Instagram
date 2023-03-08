@@ -58,7 +58,7 @@ const RegistComponent = ({ onClick, theme }) => {
 export default RegistComponent;
 
 const RegistBox = styled.div`
-  width: 100vw;
+  width: 100%;
 `;
 
 const RegistFrame = styled.div`
@@ -67,7 +67,7 @@ const RegistFrame = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  margin: 3rem auto;
+  margin: 10rem auto;
 
   & .id {
     background-color: pink;
@@ -86,7 +86,7 @@ const RegistFrame = styled.div`
   }
 
   & .name {
-    background-color: #921d7b;
+    background-color: #2c82c972;
     color: white;
     border: 1 px #000;
     border-radius: 5px;

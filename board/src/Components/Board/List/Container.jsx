@@ -9,16 +9,15 @@ const ListContainer = ({
   setCommentList,
   theme,
 }) => {
-  // 큰 index.jsx에서 props로 보내고 받고 rgrg?
-
   const listUp = async () => {
-    const tempAxios = await axios.post("http://localhost:8080/api/board/list");
+    const tempAxios = await axios.post(
+      "http://192.168.0.242:8080/api/board/list"
+    );
     setBoardList(tempAxios.data.list);
   };
 
   const removePost = async (_id) => {
-    // 복습!! _id : 정현이의 매개변수 표현 방식 나도 따라하기
-    await axios.post("http://localhost:8080/api/board/delete", {
+    await axios.post("http://192.168.0.242:8080/api/board/delete", {
       id: _id,
     });
     await listUp();

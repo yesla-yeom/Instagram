@@ -130,16 +130,20 @@ export default PostComponent;
 const BigBox = styled.div`
   width: 20%;
   display: flex;
-  margin: 1rem auto;
+  margin: 10rem auto;
 `;
 
 const LogInBox = styled.div`
-  width: 30%;
+  width: 35%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 3rem auto;
+  margin: 10rem auto;
+
+  @media ${(props) => props.theme.mobileL} {
+    width: 100%;
+  }
 `;
 
 const LogInFrame = styled.div`
