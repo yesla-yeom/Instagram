@@ -2,7 +2,7 @@ import styled from "styled-components";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const PostComponent = ({ onClick }) => {
+const PostComponent = ({ onClick, theme }) => {
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
   const [photo, setPhoto] = useState("");
@@ -92,16 +92,46 @@ const PostBox = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  @media ${(props) => props.theme.mobileL} {
+    width: 100%;
+    position: relative;
+  }
+
+  @media ${(props) => props.theme.mobileM} {
+    padding-top: 30%;
+  }
+
+  @media ${(props) => props.theme.mobileS} {
+  }
 `;
 
 const Photo = styled.img`
   width: 400px;
+
+  @media ${(props) => props.theme.mobileL} {
+    padding-top: 20%;
+    width: 100vw;
+    position: relative;
+    flex-direction: column;
+  }
+
+  @media ${(props) => props.theme.mobileM} {
+    padding-top: 30%;
+    width: 100%;
+  }
+
+  @media ${(props) => props.theme.mobileS} {
+    padding-top: 80%;
+    width: 100%;
+  }
 `;
 
 const MulterName = styled.span`
   color: grey;
   display: flex;
   justify-content: center;
+  padding-top: 20%;
 `;
 
 const MulterContainer = styled.div`
@@ -118,7 +148,7 @@ const PostFrame = styled.div`
   justify-content: center;
   align-items: center;
   text-align: center;
-  width: 30%;
+  width: 90%;
   margin: 3rem auto;
 
   & .title {

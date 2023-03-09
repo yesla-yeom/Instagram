@@ -48,8 +48,6 @@ const HeaderComponent = ({
                     <li className="dropDownColorText" onClick={goMain}>
                       HOME
                     </li>
-                    <li className="dropDownColorText">SEARCH</li>
-                    <li className="dropDownColorText">REELS</li>
                     {tempUser.userId == "" ? (
                       <></>
                     ) : (
@@ -108,18 +106,26 @@ const HoverBox = styled.div`
   display: flex;
   align-items: center;
   cursor: pointer;
+  width: 38%;
+
   div {
     width: fit-content;
     font-weight: 900;
-    padding: 15px;
+    padding: 5px;
   }
 
   & .colorText:hover {
     color: white;
     background-color: ${COLOR};
   }
+
   & .colorText {
     color: ${COLOR};
+  }
+
+  & .dropList:hover {
+    border: 1px solid beige;
+    background-color: aliceblue;
   }
 
   & .dropListOff {
@@ -142,7 +148,7 @@ const HoverBox = styled.div`
 
     & .dropList {
       position: relative;
-      top: -8%;
+      top: 25%;
       left: -26%;
       font-size: 0.7rem;
     }
@@ -172,7 +178,7 @@ const HoverBox = styled.div`
     }
 
     & .dropList {
-      top: -8%;
+      top: 40%;
       left: -20%;
     }
   }
@@ -188,8 +194,8 @@ const HoverBox = styled.div`
     }
 
     & .dropList {
-      top: -8%;
-      left: -16%;
+      top: 40%;
+      left: -20%;
     }
   }
 `;
@@ -207,12 +213,12 @@ const LeftFunc = styled.div`
   }
 
   & .logoImage {
-    width: 100%;
+    width: 80%;
   }
 
   @media ${(props) => props.theme.tabletS} {
     width: 100%;
-    margin: 0 auto;
+    margin: 0;
 
     & .logoBox {
       width: 30%;
@@ -222,7 +228,7 @@ const LeftFunc = styled.div`
 
   @media ${(props) => props.theme.mobileM} {
     & .logoBox {
-      width: 40%;
+      width: 30%;
     }
   }
 

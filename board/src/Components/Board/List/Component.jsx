@@ -79,7 +79,7 @@ export default ListComponent;
 
 const ListBox = styled.div`
   width: 100vw;
-  margin-top: 20%;
+  padding-top: 20%;
 `;
 
 const ListFrame = styled.div`
@@ -92,6 +92,16 @@ const ListFrame = styled.div`
   padding: 3rem;
   text-align: center;
 
+  @media ${(props) => props.theme.tabletL} {
+    padding-top: 10%;
+    width: 100%;
+
+    & .swiper-button-prev,
+    .swiper-button-next {
+      display: none;
+    }
+  }
+
   & .swiperBox {
     width: 100%;
     position: relative;
@@ -103,6 +113,9 @@ const ListFrame = styled.div`
     }
 
     @media ${(props) => props.theme.mobileL} {
+      padding-top: 10%;
+      width: 100%;
+
       & .swiper-button-prev,
       .swiper-button-next {
         display: none;
@@ -145,11 +158,15 @@ const ListFrame = styled.div`
   }
 
   @media ${(props) => props.theme.tabletS} {
-    width: 80%;
+    width: 100%;
     margin: 0 auto;
   }
 
   @media ${(props) => props.theme.mobileM} {
     width: 100%;
+  }
+
+  @media ${(props) => props.theme.mobileS} {
+    width: 150%;
   }
 `;

@@ -67,7 +67,7 @@ const RegistFrame = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  margin: 10rem auto;
+  margin: 7rem auto;
 
   & .id {
     background-color: pink;
@@ -106,6 +106,6 @@ const RegistFrame = styled.div`
 
   @media ${(props) => props.theme.mobileS} {
     width: fit-content;
-    margin: 0 auto;
+    margin: 2rem auto;
   }
 `;

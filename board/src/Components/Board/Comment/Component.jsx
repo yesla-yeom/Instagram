@@ -11,6 +11,7 @@ const CommentComponent = ({ onClick, commentList, id, removeComment }) => {
           {[...commentList].map((item, index) => (
             <ItemBox>
               <div key={`commentList-${index}`}>{item.text}</div>
+              <div key={`commentList-${index}`}>{item.userId}</div>
               <div key={`commentList-${index}`}>
                 {item.createdAt.slice(5, 10)}
               </div>

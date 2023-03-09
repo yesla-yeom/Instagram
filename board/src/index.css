@@ -1,3 +1,18 @@
+@font-face {
+  font-family: "poorStory-Regular";
+  src: url(../src/style/fonts/PoorStory-Regular.ttf);
+}
+
+@font-face {
+  font-family: "IBM-Regular";
+  src: url(../src/style/fonts/IBMPlexSansKR-Regular.ttf);
+}
+
+:root {
+  --font-poorStory-Regular: "poorStory-Regular";
+  --font-IBM-Regular: "IBM-Regular";
+}
+
 * {
   box-sizing: border-box;
 }
@@ -8,4 +23,6 @@ html {
 
 body {
   margin: 0;
+  font-size: 16px;
+  font-family: var(--font-IBM-Regular);
 }
