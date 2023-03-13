@@ -71,7 +71,7 @@ const CommentFrame = styled.div`
     resize: none;
     background-color: #e1dee2b1;
     color: #000000;
-    border: 1 px #000;
+    border: 1px #000;
     border-radius: 5px;
     margin: 10px;
     padding: 20px;
@@ -92,7 +92,6 @@ const CommentFrame = styled.div`
 
 const ListBox = styled.div`
   text-align: center;
-  border: 1px solid #000;
 
   .deleteBtn {
     background-color: #d3d3d387;

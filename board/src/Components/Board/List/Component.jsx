@@ -79,7 +79,16 @@ export default ListComponent;
 
 const ListBox = styled.div`
   width: 100vw;
-  padding-top: 20%;
+  padding-top: 5%;
+
+  @media ${(props) => props.theme.tabletS} {
+    padding-top: 20%;
+    width: 100%;
+  }
+  @media ${(props) => props.theme.mobileM} {
+    padding-top: 30%;
+    width: 100%;
+  }
 `;
 
 const ListFrame = styled.div`

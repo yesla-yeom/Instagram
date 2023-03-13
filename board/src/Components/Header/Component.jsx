@@ -148,7 +148,7 @@ const HoverBox = styled.div`
 
     & .dropList {
       position: relative;
-      top: 25%;
+      top: 12%;
       left: -26%;
       font-size: 0.7rem;
     }
@@ -178,7 +178,7 @@ const HoverBox = styled.div`
     }
 
     & .dropList {
-      top: 40%;
+      top: 13%;
       left: -20%;
     }
   }
@@ -194,8 +194,8 @@ const HoverBox = styled.div`
     }
 
     & .dropList {
-      top: 40%;
-      left: -20%;
+      top: 13%;
+      left: -25%;
     }
   }
 `;
