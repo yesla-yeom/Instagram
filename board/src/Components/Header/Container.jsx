@@ -17,7 +17,7 @@ const HeaderContainer = ({ tempUser, setRender, theme }) => {
   };
 
   const onClick = async () => {
-    const data = await axios.post("http://192.168.0.242:8080/api/users/logout");
+    const data = await axios.post("http://192.168.0.107:8080/api/users/logout");
 
     if (data.status === 200) {
       navigate("/");

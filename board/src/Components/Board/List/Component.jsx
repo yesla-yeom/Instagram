@@ -41,7 +41,7 @@ const ListComponent = ({
                     item[`photo${idx + 1}`] && (
                       <SwiperSlide>
                         <img
-                          src={`http://192.168.0.242:8080/uploads/${
+                          src={`http://192.168.0.107:8080/uploads/${
                             item[`photo${idx + 1}`]
                           }`}
                         />

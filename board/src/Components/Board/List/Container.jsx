@@ -11,13 +11,13 @@ const ListContainer = ({
 }) => {
   const listUp = async () => {
     const tempAxios = await axios.post(
-      "http://192.168.0.242:8080/api/board/list"
+      "http://192.168.0.107:8080/api/board/list"
     );
     setBoardList(tempAxios.data.list);
   };
 
   const removePost = async (_id) => {
-    await axios.post("http://192.168.0.242:8080/api/board/delete", {
+    await axios.post("http://192.168.0.107:8080/api/board/delete", {
       id: _id,
     });
     await listUp();

@@ -3,7 +3,7 @@ import LogInComponent from "./Component";
 
 const LogInContainer = ({ setRender, theme }) => {
   const onClick = async (userId, userPw) => {
-    const data = await axios.post("http://192.168.0.242:8080/api/users/login", {
+    const data = await axios.post("http://192.168.0.107:8080/api/users/login", {
       userId: userId,
       userPw: userPw,
     });

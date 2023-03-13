@@ -4,7 +4,7 @@ import axios from "axios";
 const PostContainer = ({ setBoardList, theme }) => {
   const listUp = async () => {
     const tempAxios = await axios.post(
-      "http://192.168.0.242:8080/api/board/list"
+      "http://192.168.0.107:8080/api/board/list"
     );
     console.log(tempAxios.data.list);
     setBoardList(tempAxios.data.list);
@@ -18,7 +18,7 @@ const PostContainer = ({ setBoardList, theme }) => {
       formData.append("photoUpload", photoUpload[i]);
     }
 
-    await axios.post("http://192.168.0.242:8080/api/board/post", formData);
+    await axios.post("http://192.168.0.107:8080/api/board/post", formData);
     await listUp();
   };
   return <PostComponent onClick={onClick} theme={theme}></PostComponent>;

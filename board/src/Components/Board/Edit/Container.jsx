@@ -11,7 +11,7 @@ const EditContainer = ({ userName, theme }) => {
 
   const takeValues = async () => {
     axios
-      .post("http://192.168.0.242:8080/api/board/take", {
+      .post("http://192.168.0.107:8080/api/board/take", {
         editId: params.editId,
       })
       .then((data) => {
@@ -22,7 +22,7 @@ const EditContainer = ({ userName, theme }) => {
   };
 
   const updateContent = async (_inputTitle, _inputText) => {
-    await axios.post("http://192.168.0.242:8080/api/board/edit", {
+    await axios.post("http://192.168.0.107:8080/api/board/edit", {
       title: _inputTitle,
       text: _inputText,
       editId: params.editId,
