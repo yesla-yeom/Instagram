@@ -7,7 +7,6 @@ import LogInContainer from "./Users/LogIn/Container";
 import PostContainer from "./Board/Post/Container";
 import RegistContainer from "./Users/Regist/Container";
 import HeaderContainer from "./Header/Container";
-import LogOutContainer from "./Header/LogOut/Container";
 import EditContainer from "./Board/Edit/Container";
 
 const Yestagram = ({ theme }) => {
